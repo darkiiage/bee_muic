@@ -7,9 +7,9 @@ describe "Static pages" do
       visit '/static_pages/home'
       expect(page).to have_content('Sample App')
     end
-    it "should have the title 'Home'" do
+    it "should not have a custom page title" do
       visit '/static_pages/home'
-      expect(page).to have_title("bee MUIC | Home")
+      expect(page).not_to have_title('| Home')
     end
   end
 
