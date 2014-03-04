@@ -46,11 +46,17 @@ line-height: 1.7em;
 
 /* header */
 
+.navbar-inverse .navbar-inner {
+  background-image: linear-gradient(to bottom,#FFA319 , #F8B932);
+  background-repeat: repeat-x;
+  border: none;
+}
+
 #logo {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
-  color: #FFA319;
+  color: #FFFFFF;
   text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
@@ -58,12 +64,14 @@ line-height: 1.7em;
   line-height: 1;
 }
 #logo:hover {
-	color: #FFFF66;
+	color: #474747;
   text-decoration: none;
 }
 
-.nav li a{
-	color: #FFFFFF;
+.navbar-inverse .nav .active > a, .navbar-inverse .nav .active > a:hover, .navbar-inverse .nav .active > a:focus {
+  color: rgb(95, 82, 82);
+  background-color: #FCDFC9;
+  box-shadow: none;
 }
 
 /* footer */
