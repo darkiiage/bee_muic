@@ -2,19 +2,20 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="navbar-inner">
     <div class="container">
-      <%= link_to "BEE MUIC", root_path , id: "logo" %>
+      <%= link_to image_tag("beeMU-logo.png", alt:"BEE MU"), root_path , id: "logo" %>
       <nav>
         <ul class="nav pull-right nav-pills">
           <% if signed_in? %>
+            <li><%= link_to "Users", users_path %></li>
             <li><%= link_to "Noti", '#' %></li>
             <li><%= link_to "Create", '#' %></li>
             <li><%= link_to current_user.first_name, current_user %></li>
             <li id="fat-menu" class="dropdown">
-              <a href= <%current_user %> class="dropdown-toggle" data-toggle="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                  <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
-                <li><%= link_to "Settings", '#' %></li>
+                <li><%= link_to "Settings", edit_user_path(current_user) %></li>
                 <li class="divider"></li>
                 <li>
                   <%= link_to "Sign out", signout_path, method: "delete" %>
