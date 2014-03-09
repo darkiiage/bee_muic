@@ -1,0 +1,38 @@
+
+<% if !current_user.admin? %> 
+  <h1>Page Not Found</h1> 
+<% else %>
+<h1>Faculties</h1>
+<div class="row">
+  <div class="span3 offset0">
+    <%= form_for(@faculty) do |f| %>
+
+      <%= f.label :faculty_name %>
+      <%= f.text_field :faculty_name %>
+
+      <%= f.label :faculty_short_name, "Symbol" %>
+      <%= f.text_field :faculty_short_name, :maxlength=>"2"%>
+
+      <%= f.label :faculty_type %>
+      <%= f.select :faculty_type, options_for_select([["Faculties", "Faculties"], ["Institutes", "Institutes"], ["Colleges", "Colleges"], ["Centers", "Centers"]]) %>
+
+      <%= f.submit "Add Faculty", class: "btn btn-large btn-warning" %>
+    <% end %>
+  </div>
+
+  <div class="span5 offset1">
+     ALL FACULTIES
+    <ul class="users">
+      <% @faculties.each do |faculty| %>
+        <li> 
+          ( <%= faculty.faculty_short_name %> ) <%= faculty.faculty_name %> 
+          | <%= link_to "delete", faculty, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+        </li>
+      <% end %>
+    </ul> 
+  </div>
+</div>
+
+<% end %>
+
