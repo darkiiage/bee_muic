@@ -15,7 +15,6 @@
 
       <%= f.label :faculty_type %>
       <%= f.select :faculty_type, options_for_select([["Faculties", "Faculties"], ["Institutes", "Institutes"], ["Colleges", "Colleges"], ["Centers", "Centers"]]) %>
-
       <%= f.submit "Add Faculty", class: "btn btn-large btn-warning" %>
     <% end %>
   </div>
@@ -28,6 +27,7 @@
           ( <%= faculty.faculty_short_name %> ) <%= faculty.faculty_name %> 
           | <%= link_to "delete", faculty, method: :delete,
                                   data: { confirm: "You sure?" } %>
+          | <%= link_to "edit", '#' %>
         </li>
       <% end %>
     </ul> 

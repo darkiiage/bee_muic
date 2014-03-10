@@ -20,6 +20,11 @@ class FacultiesController < ApplicationController
     redirect_to mufaculties_path
   end
 
+  def edit
+    redirect_to mufaculties_path
+  end
+
+
 
   private
 
