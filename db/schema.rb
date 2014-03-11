@@ -11,7 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140309185839) do
+ActiveRecord::Schema.define(version: 20140310064258) do
+
+  create_table "events", force: true do |t|
+    t.string   "event_name"
+    t.text     "event_description"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.string   "event_type"
+    t.integer  "event_cost"
+    t.string   "event_guest_type"
+    t.integer  "event_guest_limit"
+    t.string   "event_image"
+    t.boolean  "event_food"
+    t.boolean  "event_preregist"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "events", ["user_id", "start_date"], name: "index_events_on_user_id_and_start_date"
 
   create_table "faculties", force: true do |t|
     t.string   "faculty_name"
