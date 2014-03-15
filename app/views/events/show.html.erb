@@ -1,0 +1,12 @@
+<% provide(:title, @event.event_name) %>
+<h1>
+	<%= @event.event_name%> 
+    <% if current_user.admin? || current_user?(@event.user)  %> 
+        | <%= link_to "delete", @event , method: :delete,
+                                     data: { confirm: "You sure?" },
+                                     title: @event.event_name %>
+    <% end %>
+</h1>
+
+
+Event details 

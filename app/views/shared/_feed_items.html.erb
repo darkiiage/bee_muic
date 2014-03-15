@@ -1,0 +1,8 @@
+
+<li id="<%= feed_items.id %>">
+  <%= link_to feed_items.user.first_name, feed_items.user %> created 
+  <span class="content"><%= feed_items.event_name %></span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(feed_items.created_at) %> ago.
+  </span>
+</li>

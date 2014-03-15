@@ -7,12 +7,15 @@
 <% end %>
 </h1>
 
-
 <div class="row">
   <div class="span3 offset0">
 	<%= gravatar_for @user %> 
   </div>
-  <div class="span4 offset1">
+  <section>
+        <%= render 'shared/stats' %>
+        <%= render 'follow_form' if signed_in? %>
+  </section>
+  <div class="span4 offset1"> 
 	<p><%= @user.description%> </p>
   </div>
 </div>
