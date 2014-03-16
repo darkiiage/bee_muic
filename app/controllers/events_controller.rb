@@ -3,7 +3,7 @@ class EventsController < ApplicationController
   before_action :correct_user,   only: :destroy
 
   def index
-    @events = Event.all
+    @events = Event.search(params[:search])
   end
 
   def show
@@ -13,10 +13,10 @@ class EventsController < ApplicationController
   def create
     @event = current_user.events.build(event_params)
     if @event.save
-      flash[:success] = "Micropost created!"
+      flash[:success] = "Event created!"
       redirect_to root_url
     else
-      render 'static_pages/home'
+      redirect_to root_url
     end
   end
 
@@ -29,6 +29,7 @@ class EventsController < ApplicationController
   def new
   	@event = Event.new
   end
+
 
   private
 

@@ -11,4 +11,12 @@ class Event < ActiveRecord::Base
     where("user_id IN (#{followed_user_ids})",
           user_id: user.id)
   end
+
+  def self.search(search)
+    if search
+      find(:all, :conditions => ['event_name LIKE ? OR user_id LIKE ?', "%#{search}%", "%#{search}%"])
+    else
+     find(:all)
+    end
+  end
 end
