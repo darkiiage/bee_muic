@@ -9,6 +9,9 @@ gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
 gem 'font-awesome-rails'
 
+gem 'best_in_place', github: 'bernat/best_in_place'
+
+
 
 
 group :development, :test do
@@ -28,6 +31,7 @@ gem 'coffee-rails', '4.0.1'
 gem 'jquery-rails', '3.0.4'
 gem 'turbolinks', '1.1.1'
 gem 'jbuilder', '1.0.2'
+gem 'sprockets', '2.11.0'
 
 group :doc do
   gem 'sdoc', '0.3.20', require: false

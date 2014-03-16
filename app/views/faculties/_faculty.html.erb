@@ -1,0 +1,9 @@
+<li>
+  ( <%= best_in_place faculty, :faculty_short_name, :type => :input, :html_attrs=> {:maxlength => 2}%> ) 
+  <%= best_in_place faculty, :faculty_name %> |
+  <%= best_in_place faculty, :faculty_type, :type => :select, :collection => [["Faculties", "Faculties"], ["Institutes", "Institutes"], ["Colleges", "Colleges"], ["Centers", "Centers"]] %> |
+  <%= link_to "delete", faculty, method: :delete,
+              data: { confirm: "You sure?" } %> 
+
+</li>
+
