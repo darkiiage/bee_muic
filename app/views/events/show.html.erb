@@ -10,3 +10,16 @@
 
 
 Event details 
+
+<div class="span8">
+  <section>
+    <%= render 'shared/comment_form' %>
+  </section>
+  <% if @event.commentable.any? %>
+    <h3>Comments (<%= @event.commentable.count %>)</h3>
+    <ol class="microposts">
+      <%= render @comments %>
+    </ol>
+    <%= will_paginate @comments %>
+  <% end %>
+</div>

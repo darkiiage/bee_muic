@@ -10,6 +10,7 @@ BeeMuic::Application.routes.draw do
   resources :faculties
   resources :events
   resources :relationships, only: [:create, :destroy]
+  resources :comments, only: [:create, :destroy]
 
   root  'events#index'
   match '/signup',  to: 'users#new',            via: 'get'

@@ -52,17 +52,18 @@ ActiveRecord::Schema.define(version: 20140314110358) do
   add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id"
 
   create_table "users", force: true do |t|
+    t.string   "finame"
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "password_digest"
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "remember_token"
     t.string   "phone"
     t.string   "faculty"
     t.string   "major"
     t.text     "description"
+    t.string   "remember_token"
     t.boolean  "admin",           default: false
   end
 

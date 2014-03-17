@@ -1,5 +1,6 @@
 class Event < ActiveRecord::Base
   belongs_to :user
+  has_many :comments, :as => :commentable
   default_scope -> { order('start_date DESC') }
   validates :user_id, presence: true
   validates :event_name, presence:true
