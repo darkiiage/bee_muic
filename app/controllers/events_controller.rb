@@ -6,19 +6,25 @@ class EventsController < ApplicationController
     @events = Event.search(params[:search])
   end
 
+
   def show
     @event = Event.find(params[:id])
-    @comments = @event.comments.paginate(page: params[:page])
-    @comment = current_user.comments.build if signed_in?
+    @comment_items = @event.comments.paginate(page: params[:page])
+    # @comments = @event.comments.paginate(page: params[:page])
+    @comment = @event.comments.build if signed_in?
+  end
+
+  def new
+    @event = Event.new
   end
 
   def create
     @event = current_user.events.build(event_params)
     if @event.save
       flash[:success] = "Event created!"
-      redirect_to root_url
+      redirect_to @event
     else
-      redirect_to root_url
+      render 'new'
     end
   end
 
@@ -28,16 +34,12 @@ class EventsController < ApplicationController
   end
 
 
-  def new
-  	@event = Event.new
-  end
-
-
   private
 
     def event_params
       params.require(:event).permit(:event_name)
     end
+
 
     def correct_user
       if current_user.admin

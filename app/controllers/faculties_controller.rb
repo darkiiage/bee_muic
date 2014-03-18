@@ -5,6 +5,7 @@ class FacultiesController < ApplicationController
   def new
     @faculty = Faculty.new
     @faculties = Faculty.all
+    @feed_items = Faculty.all
   end
 
   def create
@@ -13,8 +14,8 @@ class FacultiesController < ApplicationController
       flash[:success] = "Faculty created"
       redirect_to allfaculties_path
     else
-      flash[:errors] =  "Errors DEBUG IT"
-      redirect_to allfaculties_path
+      @feed_items = []
+      render 'faculties/new'
     end
   end
 

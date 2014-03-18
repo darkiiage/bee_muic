@@ -8,9 +8,13 @@ BeeMuic::Application.routes.draw do
   end
   resources :sessions, only: [:new, :create, :destroy]
   resources :faculties
-  resources :events
+  resources :events do 
+    resources :comments
+    member do
+      get :users
+    end
+  end
   resources :relationships, only: [:create, :destroy]
-  resources :comments, only: [:create, :destroy]
 
   root  'events#index'
   match '/signup',  to: 'users#new',            via: 'get'

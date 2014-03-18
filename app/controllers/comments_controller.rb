@@ -5,12 +5,14 @@ class CommentsController < ApplicationController
   end
 
   def create
-  	@comment = current_user.commentables.build(comment_params)
+    @event = Event.find(params[:event_id])
+  	@comment = @event.comments.build(comment_params)
     if @comment.save
       flash[:success] = "Comment created!"
-      redirect_to event_path(event)
+      redirect_to @event
     else
-      render 'static_pages/home'
+      @comment_items = []
+      render 'events/show'
     end
   end
 
@@ -20,6 +22,14 @@ class CommentsController < ApplicationController
   private
 
     def comment_params
-      params.require(:comment).permit(:comment_content)
+      params.require(:comment).permit(:like, :comment_content, :user_id, :event_id)
+    end
+
+    def find_event
+      params.each do |name, value|
+        if name =~ /(.+)_id$/
+          return $1.classify.constantize.find(value)
+        end
+      end
     end
 end
