@@ -1,6 +1,7 @@
 <li>
   <%= link_to event.event_name, event %>
-  <%= link_to event.user.first_name, event.user  %>
+  Organized by:
+  <%= link_to event.user.first_name+" "+ event.user.last_name, event.user  %>
   <span class="timestamp">
     Posted <%= time_ago_in_words(event.created_at) %> ago.
   </span>
