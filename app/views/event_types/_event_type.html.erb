@@ -1,0 +1,18 @@
+<li>
+  <div class ="row">
+	  <div class = "span2">
+	  	<%= image_tag event_type.image_url.to_s, size:"150" %>
+	  </div>
+	  <div class = "span4">
+		  <%= event_type.name %> |
+		  color: <%= event_type.color %>  |
+		  <%= link_to "delete", event_type, method: :delete,
+		              data: { confirm: "You sure?" } %> |
+		  <%= link_to "Edit", onclick: "" %>
+	  </div>
+  </div>
+  <div class = "row">
+      <div id ="edit_form" class ="span6">
+	  </div>>
+  </div>
+</li>

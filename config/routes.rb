@@ -1,4 +1,8 @@
 BeeMuic::Application.routes.draw do
+  get "locations/index"
+  get "event_types/index"
+  get "users_types/new"
+  get "users/index"
   get "events/new"
   get "faculties/new"
   resources :users do
@@ -6,15 +10,14 @@ BeeMuic::Application.routes.draw do
       get :following, :followers
     end
   end
+  resources :relationships, only: [:create, :destroy]
   resources :sessions, only: [:new, :create, :destroy]
-  resources :faculties
   resources :events do 
     resources :comments
-    member do
-      get :users
-    end
   end
-  resources :relationships, only: [:create, :destroy]
+  resources :faculties
+  resources :event_types
+  resources :locations
 
   root  'events#index'
   match '/signup',  to: 'users#new',            via: 'get'

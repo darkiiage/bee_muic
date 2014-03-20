@@ -1,0 +1,13 @@
+<%= form_for(@location) do |f| %>
+      
+  <%= render 'shared/error_messages', object: f.object %>
+  
+  <%= f.label :map_number %>
+  <%= f.text_field :map_number, :maxlength=>"2"%>
+
+  <%= f.label :location_name %>
+  <%= f.text_field :location_name %>
+
+  <%= f.submit "Add New Location", class: "btn btn-medium btn-warning" %>
+
+<% end %>

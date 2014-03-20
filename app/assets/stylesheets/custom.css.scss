@@ -139,6 +139,9 @@ input, textarea, select, .uneditable-input {
   margin-bottom: 10px;
   @include box_sizing;
 }
+.must-fill-feild{
+  color: red;
+}
 
 input {
   height: auto !important;

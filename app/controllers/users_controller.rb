@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
+    @user = User.new(user_edit_params)
     if @user.save
       @user.update_attributes(description: "I'm a bee#2! I love sharing!")
       sign_in @user
@@ -70,6 +70,11 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:first_name,:last_name, :email, :password,
                                    :password_confirmation)
+    end
+
+    def user_edit_params
+      params.require(:user).permit(:first_name,:last_name, :email, :password,
+                                   :password_confirmation, :description, :faculty, :phone)
     end
 
     def signed_in_user

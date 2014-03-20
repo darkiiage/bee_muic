@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140318014422) do
+ActiveRecord::Schema.define(version: 20140320113637) do
 
   create_table "comments", force: true do |t|
     t.text     "comment_content"
@@ -24,6 +24,14 @@ ActiveRecord::Schema.define(version: 20140318014422) do
   end
 
   add_index "comments", ["event_id", "like", "created_at"], name: "index_comments_on_event_id_and_like_and_created_at"
+
+  create_table "event_types", force: true do |t|
+    t.string   "name"
+    t.string   "image"
+    t.string   "color"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "events", force: true do |t|
     t.string   "event_name"
@@ -48,6 +56,13 @@ ActiveRecord::Schema.define(version: 20140318014422) do
     t.string   "faculty_name"
     t.string   "faculty_short_name"
     t.string   "faculty_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "locations", force: true do |t|
+    t.integer  "map_number"
+    t.string   "location_name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

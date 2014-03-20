@@ -10,7 +10,6 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     @comment_items = @event.comments.paginate(page: params[:page])
-    # @comments = @event.comments.paginate(page: params[:page])
     @comment = @event.comments.build if signed_in?
   end
 
