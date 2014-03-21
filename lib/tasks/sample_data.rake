@@ -7,5 +7,8 @@ namespace :db do
                          password: "111111",
                          password_confirmation: "111111",
                          admin: true)
+
+
+    event_types = EventType.create!()
   end
 end

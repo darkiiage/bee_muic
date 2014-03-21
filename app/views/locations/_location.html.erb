@@ -3,7 +3,30 @@
   <%= location.location_name %> |
   <%= link_to "delete", location, method: :delete,
 		              data: { confirm: "You sure?" } %> |
-  <%= link_to "Edit", onclick: "" %>
+
+  <%= link_to "Edit", location, :data => {:toggle=> "modal", :target => "#myModal", :remote => (edit_location_path(location) + "#modal-edit-fields")} %>
+  <%= link_to "Edit", "#collapse"+location.id.to_s(),:data => {:toggle=> "collapse", :parent => "#accordion"}%>
+
+  <% @collapse = "collapse"+location.id.to_s() %>
+
+  <div id="<%= @collapse%>" class="panel-collapse collapse">
+    <div class="panel-body">
+      <%= form_for(@location) do |f| %>
+      
+        <%= render 'shared/error_messages', object: f.object %>
+        
+
+        <%= f.label :map_number %>
+        <%= f.text_field :map_number, :maxlength=>"2"%>
+
+        <%= f.label :location_name %>
+        <%= f.text_field :location_name %>
+
+        <%= f.submit "Update Location", class: "btn btn-medium btn-warning" %>
+
+      <% end %>
+    </div>
+  </div>
 
 </li>
 

@@ -1,15 +1,26 @@
 <% provide(:title, @event.event_name) %>
-<h1>
-	<%= @event.event_name%> 
-    <% if current_user.admin? || current_user?(@event.user)  %> 
+
+
+<h1><%= @event.event_name%> <% if current_user.admin? || current_user?(@event.user)  %> 
         | <%= link_to "delete", @event , method: :delete,
                                      data: { confirm: "You sure?" },
                                      title: @event.event_name %>
-    <% end %>
-</h1>
+<% end %> </h1>
 
-<div>
-	Event details 
+<!-- Nav tabs -->
+<ul class="nav nav-tabs">
+  <li class="active"><a href="#home" data-toggle="tab">About</a></li>
+  <li><a href="#profile" data-toggle="tab">Location</a></li>
+  <li><a href="#messages" data-toggle="tab">Pre-regist</a></li>
+  <li><a href="#settings" data-toggle="tab">Contact / Social</a></li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+  <div class="tab-pane active" id="home">About</div>
+  <div class="tab-pane" id="profile">Location</div>
+  <div class="tab-pane" id="messages">Pre-regist</div>
+  <div class="tab-pane" id="settings">Settings</div>
 </div>
 
 

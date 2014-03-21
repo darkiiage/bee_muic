@@ -16,8 +16,15 @@ class LocationsController < ApplicationController
   end
 
   def edit
-     respond_to do | format |  
-        format.js {render :layout => false}  
+  end
+
+  def update
+    @edit_location = Location.find(params[:id])
+    if @location.update_attributes(location_params)
+      flash[:success] = "Location updated"
+      redirect_to locations_path
+    else
+      render 'edit'
     end
   end
 

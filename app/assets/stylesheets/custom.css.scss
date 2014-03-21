@@ -33,6 +33,7 @@ textarea {
   margin-bottom: 10px;
 }
 
+
 /* typography */
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
@@ -260,3 +261,65 @@ aside {
     margin: 1px 1px;
   }
 }
+
+
+.title_head{
+  padding: 10px 15px ;
+  background-color: #E7E7E7;
+  margin: 20px 0px;
+  font-size: 1.1em;
+  color: #000000;
+}
+
+
+
+
+/* ---------- TAB ---------- */
+
+.nav-tabs > .active>li > a{
+  background-color: transparent;
+  border: none;
+  color: #555555;
+  cursor: default;
+   &:hover{
+    background-color:transparent;
+    border:transparent;
+    border-bottom: 4px solid #FFA403;
+
+  }
+}
+.nav-tabs > li > a {
+padding-top: 8px;
+padding-bottom: 8px;
+line-height: 20px;
+border: 1px solid transparent;
+-webkit-border-radius: 4px 4px 0 0;
+-moz-border-radius: 4px 4px 0 0;
+border-radius: 4px 4px 0 0;
+color: rgb(133, 133, 130);
+  &:hover{
+    background-color:transparent;
+    border:transparent;
+    border-bottom: 4px solid #FFA403;
+  }
+}
+
+.nav-tabs > .active > a {
+  background-color: transparent;
+  border: none;
+  color: #FFA403;
+  cursor: default;
+  border-bottom: 4px solid #FFA403;
+  &:hover{
+    background-color:transparent;
+    border:transparent;
+    color: #FFA403;
+    border-bottom: 4px solid #FFA403;
+  }
+}
+
+.tab-content{
+  margin-top: 0px;
+  padding: 15px 30px;
+}
+
