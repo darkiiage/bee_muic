@@ -119,6 +119,7 @@ class CreateEvents < ActiveRecord::Migration
       t.string :event_image
       t.boolean :event_food
       t.boolean :event_preregist
+      t.boolean :active, defult: true
       t.integer :user_id
       t.integer :event_type
       t.integer :location

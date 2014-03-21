@@ -1,12 +1,11 @@
 <li>
   <div class ="row">
 	  <div class = "span2">
-	  	<%= image_tag event_type.image_url.to_s, size:"150" %>
+	  	<%= image_tag social_link.social_image, size:"150" %>
 	  </div>
 	  <div class = "span4">
-		  <%= event_type.name %> |
-		  color: <%= event_type.color %>  |
-		  <%= link_to "delete", event_type, method: :delete,
+		  <%= social_link.social_name %> |
+		  <%= link_to "delete", social_link, method: :delete,
 		              data: { confirm: "You sure?" } %> |
 		  <%= link_to "Edit", onclick: "" %>
 	  </div>

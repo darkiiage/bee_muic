@@ -2,15 +2,15 @@
   <h1>Page Not Found</h1> 
 <% else %>
 
-<h1>Locations (<%= @location_items.count %>) </h1>
+<h1>Social Medias (<%= @social_link_items.count %>) </h1>
   <div class="row">
     <div class="span4 offset0">
       <%= render 'new' %>
     </div>
     <div class="span7 offset1">
-      ALL LOCATIONS
+      ALL SOCIAL MEDIA
       <ul class="users">
-      	<%= render partial: @locations, collection: @location_items %>
+      	<%= render partial: @social_links, collection: @social_link_items %>
       </ul> 
     </div>
   </div>

@@ -1,0 +1,15 @@
+
+<%= form_for(@social_link) do |f| %>
+  
+  <%= render 'shared/error_messages', object: f.object %>
+  
+  <%= f.label :social_name, "Social Link Name" %>
+  <%= f.text_field :social_name %>
+
+  <%= f.label :social_image, "Image"%>
+  <%= f.file_field :social_image%>
+
+  <%= f.submit "Add New Social Media", class: "btn btn-medium btn-warning" %>
+<% end %>
+
+

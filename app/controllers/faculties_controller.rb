@@ -2,7 +2,8 @@ class FacultiesController < ApplicationController
   respond_to :html, :json
 
 
-  def new
+
+  def index
     @faculty = Faculty.new
     @faculties = Faculty.all
     @feed_items = Faculty.all
@@ -12,7 +13,7 @@ class FacultiesController < ApplicationController
   	@faculty = Faculty.new(faculty_params)
     if @faculty.save
       flash[:success] = "Faculty created"
-      redirect_to allfaculties_path
+      redirect_to faculties_path
     else
       @feed_items = []
       render 'faculties/new'
@@ -22,7 +23,7 @@ class FacultiesController < ApplicationController
   def destroy
     Faculty.find(params[:id]).destroy
     flash[:success] = "Faculty deleted."
-    redirect_to allfaculties_path
+    redirect_to faculties_path
   end
 
   def edit

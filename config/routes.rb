@@ -1,10 +1,5 @@
 BeeMuic::Application.routes.draw do
-  get "locations/index"
-  get "event_types/index"
-  get "users_types/new"
-  get "users/index"
-  get "events/new"
-  get "faculties/new"
+
   resources :users do
     member do
       get :following, :followers
@@ -18,6 +13,7 @@ BeeMuic::Application.routes.draw do
   resources :faculties
   resources :event_types
   resources :locations
+  resources :social_links
 
   root  'events#index'
   match '/signup',  to: 'users#new',            via: 'get'
@@ -26,7 +22,6 @@ BeeMuic::Application.routes.draw do
   match '/help',    to: 'static_pages#help',    via: 'get'
   match '/about',   to: 'static_pages#about',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
-  match '/allfaculties', to:'faculties#new',    via:'get'
   match '/createevent', to: 'events#new',       via: 'get'
   match '/feed',     to: 'static_pages#feed',   via: 'get'
 
