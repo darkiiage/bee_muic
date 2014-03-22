@@ -13,6 +13,7 @@ class CreateEvents < ActiveRecord::Migration
       t.boolean :event_preregist
       t.boolean :active, defult: true
       t.integer :user_id
+      
       t.string :event_type
       t.integer :location
 
