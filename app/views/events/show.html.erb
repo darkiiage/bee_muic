@@ -53,14 +53,23 @@
     </div>
     <div class="tab-pane" id="profile">
       <% for has_location in @event.has_locations %>
-        <%= has_location.evnet_id %>
-        <%= has_location.location_id %>
+        <b> Location: </b> 
+        <%= has_location.location %> | 
+        <b> room: </b>
         <%= has_location.room %>
-        <%= has_location.floor_number %>
+        (<%= has_location.floor_number %>th Floor ) <br><br>
+        <b> Location Description: </b>
         <%= has_location.description %>
       <% end %>
     </div>
-    <div class="tab-pane" id="messages">Pre-regist</div>
+    <div class="tab-pane" id="messages">
+      <b> Guest Limit: </b> <%= @event.event_guest_limit%>  <br><br>
+      <% if @event.event_preregist %>
+        <% #render '' %>
+      <% else %>
+        <h3> This event does not require pre-registration </h3><br><br> 
+      <% end %>
+    </div>
     <div class="tab-pane" id="settings">Settings</div>
   </div>
 </div>

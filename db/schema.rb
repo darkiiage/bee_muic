@@ -46,8 +46,8 @@ ActiveRecord::Schema.define(version: 20140322042236) do
     t.boolean  "event_preregist"
     t.boolean  "active"
     t.integer  "user_id"
-    t.integer  "event_type"
-    t.integer  "location"
+    t.string   "event_type"
+    t.integer  "location_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -41,6 +41,26 @@ namespace :db do
                          admin: false, 
                          active: true)
 
+#----------------------------------------------------------------------------------------
+#-------------------------- FACULTY -----------------------------------------------------
+#----------------------------------------------------------------------------------------
+
+    kelly = User.find(1)
+    mamamia = kelly.events.create!(event_name: "Mamamia Musical",
+                         start_date: "2014-03-24 14:16:00 UTC",
+                         end_date: "2014-03-24 14:16:00 UTC ",
+                         event_cost: 0,
+                         event_guest_type: "Public",
+                         event_guest_limit: 0,
+                         event_food: true,
+                         event_preregist: false,
+                         event_type: "Art & Music" )
+
+    mamamia.has_locations.create!(
+                         location_id: 2,
+                         floor_number: 4,
+                         room: "Auditorium",
+                         description: "Ask any students if you do not where Auditorium is" )
 
 #----------------------------------------------------------------------------------------
 #-------------------------- FACULTY -----------------------------------------------------

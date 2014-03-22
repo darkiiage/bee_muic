@@ -15,9 +15,7 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
-    1.times do 
-      has_location = @event.has_locations.build
-    end 
+    @event.has_locations.build
   end
 
   def create
@@ -41,7 +39,8 @@ class EventsController < ApplicationController
     def event_params
       params.require(:event).permit(:event_name, :start_date, :end_date, :event_description, 
                                     :event_cost, :event_guest_type,:event_guest_limit, :event_food,
-                                    :event_preregist, :event_type, has_locations_attributes: [:location_id, :floor_number, :room, :description] )
+                                    :event_preregist, :event_type,
+                                    {:has_locations_attributes => [:location_id, :floor_number, :room, :description]} )
     end
 
 
