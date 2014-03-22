@@ -57,7 +57,7 @@ namespace :db do
                          event_type: "Art & Music" )
 
     mamamia.has_locations.create!(
-                         location_id: 2,
+                         location: "Office of President",
                          floor_number: 4,
                          room: "Auditorium",
                          description: "Ask any students if you do not where Auditorium is" )

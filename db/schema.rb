@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 20140322042236) do
 
   create_table "has_locations", force: true do |t|
     t.integer  "event_id"
-    t.integer  "location_id"
+    t.string   "location"
     t.integer  "floor_number"
     t.string   "room"
     t.text     "description"
