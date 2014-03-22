@@ -18,4 +18,25 @@
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
+//= require bootstrap-datetimepicker
+
+
+
+$(function() {
+
+    $('#startDatePicker').datetimepicker({
+      language: 'pt-BR',
+      startDate: new Date()
+    });
+    $('#endDatePicker').datetimepicker({
+
+      language: 'pt-BR',
+      startDate: new Date()
+    });
+  });
+
+
+
+
+
 

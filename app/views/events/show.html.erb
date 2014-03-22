@@ -1,40 +1,77 @@
 <% provide(:title, @event.event_name) %>
+<% @user ||= User.find(@event.user_id) %>
+<% @event_type ||= EventType.find(@event.event_type) %>
 
-
-<h1><%= @event.event_name%> <% if current_user.admin? || current_user?(@event.user)  %> 
-        | <%= link_to "delete", @event , method: :delete,
+<h2>
+  <%= @event_type.name%> |
+  <%= @event.event_name%>
+  <% if current_user.admin? || current_user?(@event.user)  %> 
+    | <%= link_to "delete", @event , method: :delete,
                                      data: { confirm: "You sure?" },
                                      title: @event.event_name %>
-<% end %> </h1>
+  <% end %> 
+</h2>
 
-<!-- Nav tabs -->
-<ul class="nav nav-tabs">
-  <li class="active"><a href="#home" data-toggle="tab">About</a></li>
-  <li><a href="#profile" data-toggle="tab">Location</a></li>
-  <li><a href="#messages" data-toggle="tab">Pre-regist</a></li>
-  <li><a href="#settings" data-toggle="tab">Contact / Social</a></li>
-</ul>
-
-<!-- Tab panes -->
-<div class="tab-content">
-  <div class="tab-pane active" id="home">About</div>
-  <div class="tab-pane" id="profile">Location</div>
-  <div class="tab-pane" id="messages">Pre-regist</div>
-  <div class="tab-pane" id="settings">Settings</div>
-</div>
-
-
-<div>
-  <h3>Comments (<%= @event.comments.count %>)</h3>
-  <section class="span5">
-    <%= render 'shared/comment_form' %>
-  </section>
-  <div class="span8">
-    <% if @comment_items.any? %>
-      <ol class="comments">
-        <%= render partial: 'comments/comment', collection: @comment_items %>
-      </ol>
-      <%= will_paginate @comment_items %>
-    <% end %>
+<div class= "row">
+  <div class="span3">
+    <tab><%= image_tag("#", size:"220") %>
+  </div>
+  <div class="span5 offset1">
+    <h3> by <%= link_to @user.first_name+" "+@user.last_name, @user %> </h3>
+    <p>
+      Start at:<%= @event.start_date%> <br><br>
+      End at: <%= @event.end_date%>  
+    </p>
   </div>
 </div>
+
+<!-- Nav tabs -->
+<div class ="subtitle_tab_head">
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#home" data-toggle="tab"> About </a></li>
+    <li><a href="#profile" data-toggle="tab"> Location </a></li>
+    <li><a href="#messages" data-toggle="tab"> Pre-regist </a></li>
+    <li><a href="#settings" data-toggle="tab"> Contact / Social </a></li>
+  </ul>
+</div>
+
+<div class ="subtitle_content">
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div class="tab-pane active" id="home">
+      <b> Cost: </b> 
+        <% if @event.event_cost = 0 %> free
+        <% else %> <%= @event.event_cost%> <% end %> |
+      <b>Food & Drink:</b> 
+        <% if @event.event_food%> included
+        <% else %> not included <% end %>  
+      <br><br>
+      <b> Guest Limit: </b> <%= @event.event_guest_limit%> |
+      <%= @event.event_guest_type%>
+      <br><br>
+      <%= @event.event_description%>
+    </div>
+    <div class="tab-pane" id="profile">Location</div>
+    <div class="tab-pane" id="messages">Pre-regist</div>
+    <div class="tab-pane" id="settings">Settings</div>
+  </div>
+</div>
+
+
+
+  <div class ="subtitle_head">Comments (<%= @event.comments.count %>)</div>
+  <div class ="subtitle_content">
+    <div class = "row">
+      <div class="span8">
+        <%= render 'shared/comment_form' %>
+      </div>
+      <div class="span8">
+        <% if @comment_items.any? %>
+          <ol class="comments">
+            <%= render partial: 'comments/comment', collection: @comment_items %>
+          </ol>
+          <%= will_paginate @comment_items %>
+        <% end %>
+      </div>
+    </div>
+  </div>

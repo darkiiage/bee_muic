@@ -1,5 +1,6 @@
 
 @import "bootstrap";
+@import 'bootstrap-datetimepicker';
 
 /* mixins, variables, etc. */
 
@@ -50,11 +51,16 @@ h2 {
   margin-bottom: 30px;
   text-align: left;
   font-weight: normal;
-  color: #999;
+}
+h3 {
+  font-size: 1.5em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: left;
+  font-weight: normal;
 }
 p{
-font-size: 1.3em; 
-line-height: 1.7em;
+font-size: 1.2em; 
 }
 
 /* header */
@@ -263,18 +269,48 @@ aside {
 }
 
 
-.title_head{
+.subtitle_head{
+  margin-top:30px;
   padding: 10px 15px ;
   background-color: #E7E7E7;
-  margin: 20px 0px;
   font-size: 1.1em;
-  color: #000000;
+  color: #FFA403;
+}
+
+.subtitle_tab_head{
+  margin-top: 30px;
+  padding: 10px 15px ;
+  padding-bottom: 1px;
+  background-color: #E7E7E7;
+  font-size: 1.1em;
+  color: #FFA403;
+}
+
+.subtitle_content{
+  margin: 0px 0px 0px 0px;
+  padding: 15px 30px;
+  border: 2px solid #E7E7E7;
+  border-top: none;
+  margin-bottom: 30px;
+
 }
 
 
 
 
+
 /* ---------- TAB ---------- */
+
+.nav-tabs {
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  border: none;
+}
+
+.nav-tabs >ul{
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+}
 
 .nav-tabs > .active>li > a{
   background-color: transparent;
@@ -289,13 +325,11 @@ aside {
   }
 }
 .nav-tabs > li > a {
-padding-top: 8px;
-padding-bottom: 8px;
-line-height: 20px;
+size: 1em;
+padding-top: 6px;
+padding-bottom: 10px;
+line-height: 10px;
 border: 1px solid transparent;
--webkit-border-radius: 4px 4px 0 0;
--moz-border-radius: 4px 4px 0 0;
-border-radius: 4px 4px 0 0;
 color: rgb(133, 133, 130);
   &:hover{
     background-color:transparent;
@@ -318,8 +352,4 @@ color: rgb(133, 133, 130);
   }
 }
 
-.tab-content{
-  margin-top: 0px;
-  padding: 15px 30px;
-}
 

@@ -3,7 +3,7 @@
 
 
 
-<%= form_for(@event) do |f| %>
+<%= form_for(@event)  do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class ="title_head">General Infomation </div>
   <div class = "row">
@@ -11,37 +11,63 @@
 	  Type: <%= f.collection_select(:event_type, EventType.all, :id, :name) %>
 	  <%= image_tag("#", size:"220") %>, 
 	</div>
-	<div class="span4 offset1">
+	<div class="span5 offset1">
 
-	  <%= f.check_box :event_preregist, checked: "checked" %> 
-	  <text class="must-fill-feild"> I want people to pre-regist for this event</text>
+	  <p class="must-fill-feild">
+	  	<%= f.check_box :event_preregist, checked: "checked" %> 
+	    I want people to pre-regist for this event</p>
 
 	  <%= f.label :event_name %>
 	  <%= f.text_field :event_name %>
 
-	  <%= f.label :start_date %>
-	  <%= f.date_field :start_date %>
+	  <div id="startDatePicker" class="input-append date">
+	    <%= f.label :start_date %>
+	    <%= f.text_field :start_date, :data => {:format => "dd/MM/yyyy hh:mm"} %>
+		<span class="add-on"> Pick a date</span>
+	  </div>
 
-	  <%= f.label :end_date %>
-	  <%= f.date_field :end_date %>
-
-	  <%= f.label :event_guest_type %>
-	  <%= f.text_field :event_guest_type %>
-
-	  <%= f.label :event_guest_limit %>
-	  <%= f.text_field :event_guest_limit %>
-
-	  <%= f.label :event_food %>
-	  <%= f.text_field :event_food%>
+	  <div id="endDatePicker" class="input-append date">
+	    <%= f.label :end_date %>
+	    <%= f.text_field :end_date, :data => {:format => "dd/MM/yyyy hh:mm"} %>
+		<span class="add-on"> Pick a date</span>
+	  </div>
 
 	  <%= f.label :event_description %>
-	  <%= f.text_area :event_description%>
-
+	  <%= f.text_area :event_description, :class => "form-control", :rows => "5"%>
 	</div>
   </div>
-  <div class ="title_head"> Contact Infomation </div>
+  <div class ="subtitle_head"> Details </div>
+	<div class="row">
+	  <div class="span4 offset1">
+
+	    <p> <%= f.check_box :event_food %> food and drinks included </p>
+		
+	    <%= f.label :event_cost, "Costs (Baht)" %>
+		<%= f.text_field :event_cost, :value => 0 %>
+
+		<div class="row">
+		  <div class = "span3">
+			<%= f.label :event_guest_type, "Guest Type" %>
+			<%= f.select :event_guest_type, options_for_select([["Public", "Public"], ["Staff and Students", "Staff and Students"], ["Students Only", "Students Only"]]) %>
+		  </div>
+		  <div class = "span1">
+			<%= f.label :event_guest_limit, "Limit" %>
+			<%= f.text_field :event_guest_limit, :value => 0 %>
+		  </div>
+		</div>
+
+	  </div>
+	  <div class="span4 offset1">
+		<%= f.label :location, "Location" %>
+		<%= f.text_field :location %>
+
+		<%= f.label :location_description %>
+
+	  </div>
+	</div>
+  <div class ="subtitle_head"> Contact Infomation </div>
   <div class ="row">
-    <div class="span4 offset0">
+    <div class="span4 offset1">
       Contact Info
     </div>
     <div class="span4 offset1">
