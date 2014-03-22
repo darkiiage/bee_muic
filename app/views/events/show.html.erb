@@ -1,9 +1,9 @@
 <% provide(:title, @event.event_name) %>
 <% @user ||= User.find(@event.user_id) %>
-<% @event_type ||= EventType.find(@event.event_type) %>
+<% #@event_type ||= EventType.find(@event.event_type) %>
 
 <h2>
-  <%= @event_type.name%> |
+  <%= @event.event_type%> |
   <%= @event.event_name%>
   <% if current_user.admin? || current_user?(@event.user)  %> 
     | <%= link_to "delete", @event , method: :delete,
@@ -37,7 +37,7 @@
 
 <div class ="subtitle_content">
   <!-- Tab panes -->
-  <div class="tab-content">
+  <div class="tab-content"> 
     <div class="tab-pane active" id="home">
       <b> Cost: </b> 
         <% if @event.event_cost = 0 %> free
@@ -51,7 +51,15 @@
       <br><br>
       <%= @event.event_description%>
     </div>
-    <div class="tab-pane" id="profile">Location</div>
+    <div class="tab-pane" id="profile">
+      <% for has_location in @event.has_locations %>
+        <%= has_location.evnet_id %>
+        <%= has_location.location_id %>
+        <%= has_location.room %>
+        <%= has_location.floor_number %>
+        <%= has_location.description %>
+      <% end %>
+    </div>
     <div class="tab-pane" id="messages">Pre-regist</div>
     <div class="tab-pane" id="settings">Settings</div>
   </div>

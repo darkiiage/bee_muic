@@ -15,7 +15,7 @@ class CreateEvents < ActiveRecord::Migration
       t.integer :user_id
       
       t.string :event_type
-      t.integer :location
+      t.integer :location_id
 
       t.timestamps
     end
