@@ -1,0 +1,9 @@
+<fieldset>
+	<%= f.collection_select(:social_links, SocialLink.all, :social_name, :social_name)%>
+
+	<%= f.label :social_url, "URL" %>
+	<%= f.text_field :social_url%>
+
+	<%= f.hidden_field :_destroy %>
+	<%= link_to "remove", '#', class: "remove_fields" %>
+</fieldset>

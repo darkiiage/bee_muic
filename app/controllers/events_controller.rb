@@ -16,6 +16,9 @@ class EventsController < ApplicationController
   def new
     @event = Event.new
     @event.has_locations.build
+    @event.has_contacts.build
+    @social_links = SocialLink.all
+    @social = @event.has_socials.build
   end
 
   def create
@@ -40,7 +43,9 @@ class EventsController < ApplicationController
       params.require(:event).permit(:event_name, :start_date, :end_date, :event_description, 
                                     :event_cost, :event_guest_type,:event_guest_limit, :event_food,
                                     :event_preregist, :event_type,
-                                    {:has_locations_attributes => [:location_id, :floor_number, :room, :description]} )
+                                    {:has_locations_attributes => [:location_id, :floor_number, :room, :description]},
+                                    {:has_contacts_attributes => [:contact_name, :contact_email, :contact_phone]},
+                                    {:has_socials_attributes => [:social_links, :social_url]} )
     end
 
 

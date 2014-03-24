@@ -28,17 +28,17 @@
 <!-- Nav tabs -->
 <div class ="subtitle_tab_head">
   <ul class="nav nav-tabs">
-    <li class="active"><a href="#home" data-toggle="tab"> About </a></li>
-    <li><a href="#profile" data-toggle="tab"> Location </a></li>
-    <li><a href="#messages" data-toggle="tab"> Pre-regist </a></li>
-    <li><a href="#settings" data-toggle="tab"> Contact / Social </a></li>
+    <li class="active"><a href="#about" data-toggle="tab">About</a></li>
+    <li><a href="#location" data-toggle="tab"> Location </a></li>
+    <li><a href="#pre-regist" data-toggle="tab"> Pre-regist </a></li>
+    <li><a href="#contact" data-toggle="tab"> Contact / Social </a></li>
   </ul>
 </div>
 
 <div class ="subtitle_content">
   <!-- Tab panes -->
   <div class="tab-content"> 
-    <div class="tab-pane active" id="home">
+    <div class="tab-pane active" id="about">
       <b> Cost: </b> 
         <% if @event.event_cost = 0 %> free
         <% else %> <%= @event.event_cost%> <% end %> |
@@ -51,7 +51,7 @@
       <br><br>
       <%= @event.event_description%>
     </div>
-    <div class="tab-pane" id="profile">
+    <div class="tab-pane" id="location">
       <% for has_location in @event.has_locations %>
         <b> Location: </b> 
         <%= has_location.location %> | 
@@ -62,15 +62,32 @@
         <%= has_location.description %>
       <% end %>
     </div>
-    <div class="tab-pane" id="messages">
+    <div class="tab-pane" id="pre-regist">
       <b> Guest Limit: </b> <%= @event.event_guest_limit%>  <br><br>
       <% if @event.event_preregist %>
         <% #render '' %>
       <% else %>
-        <h3> This event does not require pre-registration </h3><br><br> 
+        <h3> This event does not require pre-registration </h3><br> 
       <% end %>
     </div>
-    <div class="tab-pane" id="settings">Settings</div>
+    <div class="tab-pane" id="contact">
+      <div class="roew">
+        <div class="span4 offset">
+          <b> Contact Info: </b><br>
+          <% for has_contact in @event.has_contacts %>
+            <b> Name: </b> <%= has_contact.contact_name %> <br>
+            <b> Phone: </b> <%= has_contact.contact_phone %> | <%= has_contact.contact_email %>
+          <% end %>
+        </div>
+        <div class="span4 offset1">
+         <b> Social Media Links: </b><br>
+        <% for has_social in @event.has_socials %>
+            <b><%= has_social.social_links %> </b> | 
+            <%= has_social.social_url %> 
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 

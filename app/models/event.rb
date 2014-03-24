@@ -3,6 +3,10 @@ class Event < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   has_many :has_locations, dependent: :destroy
   accepts_nested_attributes_for :has_locations
+  has_many :has_contacts, dependent: :destroy
+  accepts_nested_attributes_for :has_contacts
+  has_many :has_socials, dependent: :destroy
+  accepts_nested_attributes_for :has_socials, :reject_if => lambda { |a| a[:social_url].blank? }, :allow_destroy => true
 
   default_scope -> { order('start_date DESC') }
   validates :user_id, presence: true
@@ -10,6 +14,7 @@ class Event < ActiveRecord::Base
   validates :start_date, presence:true
   validates :end_date, presence:true
   validates :event_type, presence:true
+  validates :has_socials, presence:false
 
   
   def self.from_users_followed_by(user)

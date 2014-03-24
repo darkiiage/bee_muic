@@ -5,7 +5,7 @@
 
 <%= form_for(@event)  do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
-  <div class ="title_head">General Infomation </div>
+  <div class ="subtitle_head">General Infomation </div>
   <div class = "row">
 	<div class="span3 offset1">
 	  Type: <%= f.collection_select(:event_type, EventType.all, :name, :name) %>
@@ -58,20 +58,23 @@
 
 	  </div>
 	  <div class="span4 offset1">
-
 		<%= f.fields_for :has_locations do |builder| %>
 		  <%= render "has_locations_fields", :f => builder %>
 	    <% end %>
-
 	  </div>
 	</div>
   <div class ="subtitle_head"> Contact Infomation </div>
   <div class ="row">
     <div class="span4 offset1">
-      Contact Info
+      <%= f.fields_for :has_contacts do |builder| %>
+		<%= render "has_contacts_fields", :f => builder %>
+	  <% end %>
     </div>
     <div class="span4 offset1">
-      Social Links
+      <%= f.fields_for :has_socials do |builder| %>
+		<%= render "has_social_fields", :f => builder %>
+	  <% end %>
+	  <p><%= link_to_add_fields "Add more URL", f, :has_socials %></p>
     </div>
   </div>
   <%= f.submit "Create my event", class: "btn btn-large btn-warning" %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140322042236) do
+ActiveRecord::Schema.define(version: 20140322132516) do
 
   create_table "comments", force: true do |t|
     t.text     "comment_content"
@@ -62,6 +62,15 @@ ActiveRecord::Schema.define(version: 20140322042236) do
     t.datetime "updated_at"
   end
 
+  create_table "has_contacts", force: true do |t|
+    t.integer  "event_id"
+    t.string   "contact_name"
+    t.string   "contact_email"
+    t.string   "contact_phone"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "has_locations", force: true do |t|
     t.integer  "event_id"
     t.string   "location"
@@ -73,6 +82,14 @@ ActiveRecord::Schema.define(version: 20140322042236) do
   end
 
   add_index "has_locations", ["event_id"], name: "index_has_locations_on_event_id"
+
+  create_table "has_socials", force: true do |t|
+    t.integer  "event_id"
+    t.string   "social_links"
+    t.string   "social_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "locations", force: true do |t|
     t.integer  "map_number"
