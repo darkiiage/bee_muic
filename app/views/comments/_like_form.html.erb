@@ -1,0 +1,10 @@
+
+<% unless current_user?(@user) %>
+  <div id="like_form">
+  <% if current_user.voted_up_on? @comment %>
+    <%= render 'cocmments/like' %>
+  <% else %>
+    <%= render 'comments/unlike' %>
+  <% end %>
+  </div>
+<% end %>

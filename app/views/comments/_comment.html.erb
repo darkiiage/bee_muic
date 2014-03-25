@@ -1,8 +1,14 @@
 <li>
-  <% @user ||= User.find(comment.user_id) %>
+  <% @user ||= User.find(comment.user_id) %> 
   <%= link_to @user.first_name+" "+@user.last_name, @user %>
-  <span class="content"><%= comment.comment_content %></span>
-  <span class="timestamp">
+  <text class="timestamp">
     Posted <%= time_ago_in_words(comment.created_at) %> ago.
-  </span>
+  </text> 
+  <span class="content"><%= comment.comment_content %></span>
+
+  <span> (<%= comment.likes.size %>) <%= link_to "like", like_event_comment_path(@event, comment), method: :put%>
+  | (<%= comment.dislikes.size %>) <%= link_to "dislike", dislike_event_comment_path(@event, comment), method: :put %>
+  | [<%= comment.votes.size %> total votes]</span>
+
+
 </li>

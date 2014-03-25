@@ -8,8 +8,14 @@ BeeMuic::Application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   resources :sessions, only: [:new, :create, :destroy]
   resources :events do 
-    resources :comments
+    resources :comments do
+      member do
+        put "like", to: "comments#upvote"
+        put "dislike", to: "comments#downvote"
+      end
+    end
   end
+
   resources :faculties
   resources :event_types
   resources :locations

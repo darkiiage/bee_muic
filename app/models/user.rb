@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  acts_as_voter
+  
   has_many :events, dependent: :destroy
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :followed_users, through: :relationships, source: :followed
@@ -20,6 +22,8 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, length: { minimum: 6 }
+
+
 
 
   def User.new_remember_token

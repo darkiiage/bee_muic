@@ -19,6 +19,20 @@ class CommentsController < ApplicationController
   def destroy
   end
 
+  def upvote
+    @event = Event.find(params[:event_id])
+    @comment = Comment.find(params[:id])
+    @comment.liked_by current_user
+    redirect_to @event
+  end
+
+  def downvote
+    @event = Event.find(params[:event_id])
+    @comment = Comment.find(params[:id])
+    @comment.downvote_from current_user
+    redirect_to @event
+  end
+
   private
 
     def comment_params

@@ -4,4 +4,6 @@ class Comment < ActiveRecord::Base
 	validates :user_id, presence: true
 	validates :event_id, presence: true
 	validates :comment_content, presence: true
+
+	acts_as_votable
 end
