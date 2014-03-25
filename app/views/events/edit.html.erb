@@ -1,5 +1,5 @@
-<% provide(:title, 'Create Event') %>
-<h1>Create Event</h1>
+<% provide(:title, "Edit Event") %>
+<h1> Edit Event</h1>
 
 
 <%= form_for(@event)  do |f| %>
@@ -68,15 +68,18 @@
   <div class ="row">
     <div class="span4 offset1">
       <%= f.fields_for :has_contacts do |builder| %>
-		<%= render "has_contact_fields", :f => builder %>
+			<%= render "has_contact_fields", :f => builder %>
 	  <% end %>
+	  <%= link_to_add_fields "Add more Contact", f, :has_contacts %>
     </div>
     <div class="span4 offset1">
       <%= f.fields_for :has_socials do |builder| %>
 		<%= render "has_social_fields", :f => builder %>
 	  <% end %>
-	  <p><%= link_to_add_fields "Add more URL", f, :has_socials %></p>
+	  <%= link_to_add_fields "Add more URL", f, :has_socials %>
     </div>
   </div>
-  <%= f.submit "Create my event", class: "btn btn-large btn-warning" %>
+  <%= f.submit "Edit this Event", class: "btn btn-large btn-warning" %>
 <% end %>
+
+

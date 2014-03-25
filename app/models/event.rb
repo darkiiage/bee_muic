@@ -2,9 +2,9 @@ class Event < ActiveRecord::Base
   belongs_to :user
   has_many :comments, dependent: :destroy
   has_many :has_locations, dependent: :destroy
-  accepts_nested_attributes_for :has_locations
+  accepts_nested_attributes_for :has_locations, :allow_destroy => true
   has_many :has_contacts, dependent: :destroy
-  accepts_nested_attributes_for :has_contacts
+  accepts_nested_attributes_for :has_contacts, :reject_if => lambda { |a| a[:contact_name].blank? }, :allow_destroy => true
   has_many :has_socials, dependent: :destroy
   accepts_nested_attributes_for :has_socials, :reject_if => lambda { |a| a[:social_url].blank? }, :allow_destroy => true
 

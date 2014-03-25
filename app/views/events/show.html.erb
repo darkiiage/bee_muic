@@ -9,6 +9,8 @@
     | <%= link_to "delete", @event , method: :delete,
                                      data: { confirm: "You sure?" },
                                      title: @event.event_name %>
+    | <%= link_to "edit", edit_event_path(@event) %>
+
   <% end %> 
 </h2>
 
@@ -76,7 +78,10 @@
           <b> Contact Info: </b><br>
           <% for has_contact in @event.has_contacts %>
             <b> Name: </b> <%= has_contact.contact_name %> <br>
-            <b> Phone: </b> <%= has_contact.contact_phone %> | <%= has_contact.contact_email %>
+          <% if has_contact.contact_phone? %>
+            <b> Phone: </b> <%= has_contact.contact_phone %> | 
+          <% end %>
+          <%= has_contact.contact_email %> <br> <br> 
           <% end %>
         </div>
         <div class="span4 offset1">
@@ -88,7 +93,7 @@
             <% else %>
               <b><%= has_social.social_links %> </b> | 
             <% end %>
-            <%= has_social.social_url %> <br>
+            <%= has_social.social_url %> <br><br> 
           <% end %>
         </div>
       </div>

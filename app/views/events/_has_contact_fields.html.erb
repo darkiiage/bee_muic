@@ -1,0 +1,11 @@
+<fieldset>
+	<%= f.label :contact_name %>
+	<%= f.text_field :contact_name, :value => current_user.first_name+" "+ current_user.last_name %>
+	<%= f.label :contact_email %>
+	<%= f.text_field :contact_email, :value => current_user.email %>
+	<%= f.label :contact_phone %>
+	<%= f.text_field :contact_phone, :value => current_user.phone %>
+
+	<%= f.hidden_field :_destroy %>
+	<%= link_to "remove", '#', class: "remove_fields" %>
+</fieldset>
