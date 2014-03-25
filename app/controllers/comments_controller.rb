@@ -26,10 +26,24 @@ class CommentsController < ApplicationController
     redirect_to @event
   end
 
+  def unupvote
+    @event = Event.find(params[:event_id])
+    @comment = Comment.find(params[:id])
+    @comment.unliked_by current_user
+    redirect_to @event
+  end
+
   def downvote
     @event = Event.find(params[:event_id])
     @comment = Comment.find(params[:id])
     @comment.downvote_from current_user
+    redirect_to @event
+  end
+
+  def undownvote
+    @event = Event.find(params[:event_id])
+    @comment = Comment.find(params[:id])
+    @comment.undisliked_by current_user
     redirect_to @event
   end
 

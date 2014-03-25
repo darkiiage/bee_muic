@@ -11,7 +11,9 @@ BeeMuic::Application.routes.draw do
     resources :comments do
       member do
         put "like", to: "comments#upvote"
+        put "unlike", to: "comments#unupvote"
         put "dislike", to: "comments#downvote"
+        put "undislike", to: "comments#undownvote"
       end
     end
   end

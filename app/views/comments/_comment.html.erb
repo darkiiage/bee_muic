@@ -6,8 +6,18 @@
   </text> 
   <span class="content"><%= comment.comment_content %></span>
 
-  <span> (<%= comment.likes.size %>) <%= link_to "like", like_event_comment_path(@event, comment), method: :put%>
-  | (<%= comment.dislikes.size %>) <%= link_to "dislike", dislike_event_comment_path(@event, comment), method: :put %>
+  <span> (<%= comment.likes.size %>) 
+	  <% if current_user.voted_up_on? comment %>
+	    <%= link_to "unlike", unlike_event_comment_path(@event, comment), method: :put%>
+	  <% else %>
+	    <%= link_to "like", like_event_comment_path(@event, comment), method: :put %>
+	  <% end %>
+  | (<%= comment.dislikes.size %>) 
+  	<% if current_user.voted_down_on? comment %>
+	    <%= link_to "undislike", undislike_event_comment_path(@event, comment), method: :put%>
+	  <% else %>
+	    <%= link_to "dislike", dislike_event_comment_path(@event, comment), method: :put%>
+	  <% end %>
   | [<%= comment.votes.size %> total votes]</span>
 
 
