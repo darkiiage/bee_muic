@@ -16,6 +16,17 @@ class SocialLinksController < ApplicationController
   end
 
   def edit
+    @social_link = SocialLink.find(params[:id])
+  end
+
+  def update
+    @social_link = SocialLink.find(params[:id])
+    if @social_link.update_attributes(social_link_params)
+      flash[:success] = "Profile updated"
+      redirect_to social_links_path
+    else
+      render 'edit'
+    end
   end
 
   def destroy

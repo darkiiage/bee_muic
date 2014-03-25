@@ -9,7 +9,9 @@
   <div class = "row">
 	<div class="span3 offset1">
 	  Type: <%= f.collection_select(:event_type, EventType.all, :name, :name) %>
-	  <%= image_tag("#", size:"220") %>, 
+	  <%= f.label :event_image %>
+	  <%= image_tag("#", size:"220") %>
+	  <%= f.file_field :event_image%>
 	</div>
 	<div class="span5 offset1">
 

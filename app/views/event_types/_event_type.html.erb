@@ -8,7 +8,7 @@
 		  color: <%= event_type.color %>  |
 		  <%= link_to "delete", event_type, method: :delete,
 		              data: { confirm: "You sure?" } %> |
-		  <%= link_to "Edit", onclick: "" %>
+		  <%= link_to "Edit", edit_event_type_path(event_type) %>
 	  </div>
   </div>
   <div class = "row">

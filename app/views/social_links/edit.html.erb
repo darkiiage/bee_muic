@@ -1,0 +1,14 @@
+<% provide(:title, "Edit Social Media") %>
+<h1>Update Event Types</h1>
+
+<div>
+  <%= form_for(@social_link) do |f| %>
+	<%= f.label :social_name, "Social Media Name" %>
+	<%= f.text_field :social_name %>
+	  
+	<%= f.label :social_image %>
+	<%= f.file_field :social_image%>
+
+	<%= f.submit "Edit this Social Media ", class: "btn btn-medium btn-warning" %>
+  <% end %>
+</div>

@@ -1,6 +1,6 @@
 <% provide(:title, @event.event_name) %>
 <% @user ||= User.find(@event.user_id) %>
-<% #@event_type ||= EventType.find(@event.event_type) %>
+<% @event_type ||= EventType.find_by name: @event.event_type %>
 
 <h2>
   <%= @event.event_type%> |
@@ -14,7 +14,7 @@
 
 <div class= "row">
   <div class="span3">
-    <tab><%= image_tag("#", size:"220") %>
+    <tab><%= image_tag @event.event_image_url.to_s, size:"220" %>
   </div>
   <div class="span5 offset1">
     <h3> by <%= link_to @user.first_name+" "+@user.last_name, @user %> </h3>
@@ -80,10 +80,15 @@
           <% end %>
         </div>
         <div class="span4 offset1">
-         <b> Social Media Links: </b><br>
-        <% for has_social in @event.has_socials %>
-            <b><%= has_social.social_links %> </b> | 
-            <%= has_social.social_url %> 
+          <b> Social Media Links: </b><br>
+          <% for has_social in @event.has_socials %>
+            <% @social_link = SocialLink.find_by social_name: has_social.social_links %>
+            <% if @social_link %>
+              <%= image_tag @social_link.social_image_url.to_s, size:"50" %>
+            <% else %>
+              <b><%= has_social.social_links %> </b> | 
+            <% end %>
+            <%= has_social.social_url %> <br>
           <% end %>
         </div>
       </div>

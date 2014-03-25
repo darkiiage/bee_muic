@@ -16,8 +16,16 @@ class EventTypesController < ApplicationController
   end
 
   def edit
-     respond_to do | format |  
-        format.js {render :layout => false}  
+    @event_type = EventType.find(params[:id])
+  end
+
+  def update
+    @event_type = EventType.find(params[:id])
+    if @event_type.update_attributes(event_type_params)
+      flash[:success] = "Profile updated"
+      redirect_to event_types_path
+    else
+      render 'edit'
     end
   end
 

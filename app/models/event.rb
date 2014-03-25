@@ -11,10 +11,14 @@ class Event < ActiveRecord::Base
   default_scope -> { order('start_date DESC') }
   validates :user_id, presence: true
   validates :event_name, presence:true
-  validates :start_date, presence:true
-  validates :end_date, presence:true
+  validates :start_date, presence:false
+  validates :end_date, presence:false
   validates :event_type, presence:true
   validates :has_socials, presence:false
+  validates :event_image, presence: false
+
+
+  mount_uploader :event_image, ImageUploader
 
   
   def self.from_users_followed_by(user)

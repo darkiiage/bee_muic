@@ -23,6 +23,11 @@ class EventsController < ApplicationController
 
   def create
     @event = current_user.events.build(event_params)
+    if @event.event_image.blank?
+      @event_type = EventType.find_by name: @event.event_type
+      @event.event_image = @event_type.image;
+
+    end 
     if @event.save
       flash[:success] = "Event created!"
       redirect_to @event
@@ -42,7 +47,7 @@ class EventsController < ApplicationController
     def event_params
       params.require(:event).permit(:event_name, :start_date, :end_date, :event_description, 
                                     :event_cost, :event_guest_type,:event_guest_limit, :event_food,
-                                    :event_preregist, :event_type,
+                                    :event_preregist, :event_type, :event_image,
                                     {:has_locations_attributes => [:location_id, :floor_number, :room, :description]},
                                     {:has_contacts_attributes => [:contact_name, :contact_email, :contact_phone]},
                                     {:has_socials_attributes => [:social_links, :social_url]} )
