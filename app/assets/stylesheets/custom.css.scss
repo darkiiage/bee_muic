@@ -36,12 +36,18 @@ textarea {
 
 .container{
   margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 .body-container{
-  background-color: white;
-  padding: 20px;
+  background-color: #ffffff;
+  padding: 25px;
   margin-top: 0px;
+  border: 1px solid black;
+  border: 1px solid;
+  border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+  -webkit-border-radius: 5px;
+  box-shadow: 0px 0px 20px 1px #e0e0e0;
 }
 
 /* typography */
@@ -215,9 +221,9 @@ input {
 .events {
   list-style: none;
   margin: 10px 0 0 0;
-  color: #494949;
+  color: #7C7979;
   li {
-    padding: 10px 0;
+    padding: 15px 0;
     border-top: 1px solid #e8e8e8;
     line-height: 25px;
     .event-title{
@@ -239,6 +245,9 @@ input {
     }
   }
 }
+
+
+
 
 .comments {
   list-style: none;
@@ -397,3 +406,73 @@ color: rgb(133, 133, 130);
 }
 
 
+
+/* ----------------------------------------- */
+/* --------------- CALENDER ---------------- */
+/* ----------------------------------------- */
+
+#calendar table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#calendar td,
+#calendar th {
+  font-size: 10px;
+  padding: 6px;
+  border: 1px solid #999;
+}
+
+#calendar th {
+  background: #46443F;
+  color: white;
+  text-align: center;
+  width: 14.2857142857143%;
+  font-size: 1em;
+}
+
+#calendar td {
+  background: #FFF;
+  color: #777;
+  height: 110px;
+  vertical-align: top;
+  font-size: 0.8em;
+}
+
+#calendar .notmonth {
+  color: #B4B2B2;
+  background-color: #FAFAFA
+}
+
+
+#calendar #month {
+  margin: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+#calendar #month a, #calendar #month a:hover {
+  text-decoration: none;
+  padding: 0 10px;
+  color: #999;
+}
+
+#calendar .today {
+  background-color: #D7F2FF;
+  text-decoration: bold;
+}
+
+#calendar ul {
+  margin: 0;
+  margin-top: 5px;
+  padding: 0;
+  list-style: none;
+}
+
+#calendar li {
+  margin: 0;
+  padding: 0;
+  font-size: 0.9em;
+  
+}

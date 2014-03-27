@@ -1,6 +1,6 @@
 <div class = "row">
   <div class="span3"> <h1> What's On </h1> </div>
-  <div class="span5"> <%= render 'filter_form' %> </div>
+  <div class="span6"> <%= render 'filter_form' %> </div>
 </div>
 <br>
 
@@ -8,23 +8,40 @@
 
 <div class ="event_title_head">
   <ul class="nav nav-tabs">
-    <li class="active"><a href="#calendar" data-toggle="tab">Calendar View</a></li>
-    <li><a href="#list" data-toggle="tab"> List view </a></li>
+    <li class="active"><a href="#list" data-toggle="tab">List View</a></li>
+    <li><a href="#calendar" data-toggle="tab"> Calendar view </a></li>
   </ul>
 </div>
 
   <!-- Tab panes -->
   <div class="tab-content"> 
-    <div class="tab-pane active" id="calendar">
-        Calendar View
-    </div>
-    <div class="tab-pane" id="list">
+    <div class="tab-pane active" id="list">
       <div class = "row">
 		<ol class="events">
 			<%= render @events %> 
 		</ol>
 	  </div>
 	  <%= will_paginate %>
+    </div>
+    <div class="tab-pane" id="calendar">
+        <div id="calendar">
+        <h2 id="month">
+          <%= link_to "<", :month => (@date.beginning_of_month-1).strftime("%Y-%m-%d") %>
+          <%=h @date.strftime("%B %Y") %>
+          <%= link_to ">", :month => (@date.end_of_month+1).strftime("%Y-%m-%d") %>
+        </h2>
+		  <%= calendar_for @cal_events, :year => @date.year, :month => @date.month do |calendar| %>
+		    <%= calendar.head('Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun') %>
+		    <%= calendar.day(:day_method => :start_date) do |date, cal_events| %>
+		      <%= date.day %>
+		        <ul>
+			      <% cal_events.each do |cal_event| %>
+			        <li> <%= link_to h(cal_event.event_name), cal_event %> </li>
+			      <% end %>
+			    </ul>
+		    <% end %>
+		  <% end %>
+		</div>
     </div>
   </div>
 

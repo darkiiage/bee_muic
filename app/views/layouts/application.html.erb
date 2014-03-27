@@ -11,6 +11,7 @@
   <body>
     <%= render 'layouts/header' %>
     <div class="container">
+    <div class="body-container">
       <% if signed_in? %>
         <% if current_user.admin? %> 
           <%= render 'layouts/admin_homenav' %>
@@ -20,6 +21,7 @@
           <div class="alert alert-<%= key %>"><%= value %></div>
         <% end %>
           <%= yield %>
+    </div>
     </div>
 
 

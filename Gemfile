@@ -34,6 +34,7 @@ gem 'carrierwave'
 gem 'bootstrap-datetimepicker-rails', '~> 0.0.11'
 gem 'acts_as_votable', '~> 0.8.0'
 gem 'ransack'
+gem "watu_table_builder", :require => "table_builder"
 
 
 
