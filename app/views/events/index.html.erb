@@ -5,14 +5,28 @@
 <br>
 
 
-<div class = "row">
-  <ol class="events">
-	<%= render @events %> 
-  </ol>
+
+<div class ="event_title_head">
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#calendar" data-toggle="tab">Calendar View</a></li>
+    <li><a href="#list" data-toggle="tab"> List view </a></li>
+  </ul>
 </div>
-<%= will_paginate %>
 
-
+  <!-- Tab panes -->
+  <div class="tab-content"> 
+    <div class="tab-pane active" id="calendar">
+        Calendar View
+    </div>
+    <div class="tab-pane" id="list">
+      <div class = "row">
+		<ol class="events">
+			<%= render @events %> 
+		</ol>
+	  </div>
+	  <%= will_paginate %>
+    </div>
+  </div>
 
 
 
