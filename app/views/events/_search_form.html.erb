@@ -1,7 +1,8 @@
-<%= form_tag events_path, :method => 'get', :class => "navbar-form pull-left" do %>
-  <div class="row">
-    <div class="span5">
-      <%= text_field_tag :search, params[:search], :placeholder=>"Search for events" %>
-    </div>
+<%= form_tag events_path, :method => 'get', :class => "navbar-form pull-left " do %>
+  <div class="input-group input-append">
+	<%= text_field_tag :search, params[:search], :placeholder=>"Search for events" %>
+	<%= submit_tag "Search", class: "btn btn-default" %>
   </div>
 <% end %>
+
+

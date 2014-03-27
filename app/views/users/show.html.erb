@@ -26,7 +26,6 @@
   	  <li><%= link_to "Past Events", '#' %> </li>
   	</ul>
   </nav>
-  <div class="span8">
     <% if @user.events.any? %>
       <h3> <%= @user.events.count %> events</h3>
       <ol class="events">
@@ -36,6 +35,5 @@
     <% else %>
       There is no events yet!
     <% end %>
-  </div>
 </div>
 

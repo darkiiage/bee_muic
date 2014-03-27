@@ -1,7 +1,18 @@
-<h1>What's On</h1>
-<ol class="events">
-	<%= render @events %>
-</ol>
+<div class = "row">
+  <div class="span3"> <h1> What's On </h1> </div>
+  <div class="span5"> <%= render 'filter_form' %> </div>
+</div>
+<br>
+
+
+<div class = "row">
+  <ol class="events">
+	<%= render @events %> 
+  </ol>
+</div>
+<%= will_paginate %>
+
+
 
 
 

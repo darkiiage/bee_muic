@@ -1,0 +1,26 @@
+<%= search_form_for @search do |f| %>
+  <div class ="row">
+	<div class="field">
+	  <div class="input-group input-append">
+		<%= f.text_field :event_name_cont %>
+		<%= f.submit "Seacrh", :class => "btn btn-defult"%> 
+		<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="btn btn-defult"> Filter </a>
+      </div>
+	  <div id="collapseOne" class="panel-collapse collapse in">
+		<div class = "span2">
+		    Eeven Type <br>
+			<% EventType.all.each do |event_type| %>
+			    <%= check_box_tag('q[event_type_cont_any][]', event_type.name) %>
+			    <%= event_type.name %> <br>
+			<% end %>
+		</div>
+		<div class = "span2 offset1">
+		  	Price less than (baht)
+		  	<%= f.select :event_cost_lteq, options_for_select([['All',''],['free', 0],['100',100], ['200',200]]) %>
+		  	Guest Type
+		  	<%= f.select :event_guest_type_eq, options_for_select([["Public", "Public"], ["Staff and Students", "Staff and Students"], ["Students Only", "Students Only"]]) %>
+		</div>
+	  </div>
+	</div>
+  </div>
+<% end %>

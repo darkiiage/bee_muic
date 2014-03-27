@@ -1,10 +1,38 @@
+
 <li>
-  <%= link_to event.event_name, event %>
-  Organized by:
-  <%= link_to event.user.first_name+" "+ event.user.last_name, event.user  %>
-  <span class="timestamp">
-    Posted <%= time_ago_in_words(event.created_at) %> ago.
-  </span> |
-  <%= link_to "delete", event, method: :delete,
-              data: { confirm: "You sure?" } %> 
+  <div class = "row">
+    <div class ="span2">
+      <%= image_tag event.event_image_url.to_s, size:"120", :class => "img-thumbnail" %>
+    </div>
+    <div class = "span5">
+      <div class = "event-title">
+	      <%= event.event_type %> | 
+		  <%= link_to event.event_name, event %> |
+		  <%= link_to "delete", event, method: :delete,
+		              data: { confirm: "You sure?" } %> <br>
+	  </div>
+	  by : <b> <%= link_to event.user.first_name+" "+ event.user.last_name, event.user  %> </b><br>
+	  satrt : <b> <%= time_tag(event.start_date) %> </b> | 
+	  end :<%= time_tag(event.end_date) %> <br>
+	  <% event.has_locations.each do |location| %>
+	    <%= location.location %>
+	  <% end %>
+	</div>
+	<div class = "span1 offset1">
+	  <div class="row"> 
+	    <br><detail>
+	      <% if event.event_cost == 0 %>
+	        free
+	      <% else %>
+	    	<%= event.event_cost %>
+	      <% end %>
+	    </detail> <br> 
+	  </div>
+	  <div class="row"> cost </div>
+	</div>
+	<div class = "span1">
+	  <div class="row"> <br> <detail> 1,200 </detail><br> </div>
+	  <div class="row"> pre-regist </div>
+	</div>
+  </div>
 </li>

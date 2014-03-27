@@ -12,12 +12,13 @@
 	  <% else %>
 	    <%= link_to "like", like_event_comment_path(@event, comment), method: :put %>
 	  <% end %>
-  | (<%= comment.dislikes.size %>) 
+  | 
   	<% if current_user.voted_down_on? comment %>
 	    <%= link_to "undislike", undislike_event_comment_path(@event, comment), method: :put%>
 	  <% else %>
 	    <%= link_to "dislike", dislike_event_comment_path(@event, comment), method: :put%>
 	  <% end %>
+	  (<%= comment.dislikes.size %>) 
   | [<%= comment.votes.size %> total votes]</span>
 
 

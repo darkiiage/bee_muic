@@ -8,7 +8,7 @@ class Event < ActiveRecord::Base
   has_many :has_socials, dependent: :destroy
   accepts_nested_attributes_for :has_socials, :reject_if => lambda { |a| a[:social_url].blank? }, :allow_destroy => true
 
-  default_scope -> { order('start_date DESC') }
+  default_scope -> { order('start_date ASC') }
   validates :user_id, presence: true
   validates :event_name, presence:true
   validates :start_date, presence:false
@@ -28,11 +28,11 @@ class Event < ActiveRecord::Base
           user_id: user.id)
   end
 
-  def self.search(search)
-    if search
-      find(:all, :conditions => ['event_name LIKE ? OR user_id LIKE ?', "%#{search}%", "%#{search}%"])
-    else
-     find(:all)
-    end
-  end
+  # def self.search(search)
+  #   if search
+  #     find(:all, :conditions => ['event_name LIKE ? OR user_id LIKE ?', "%#{search}%", "%#{search}%"])
+  #   else
+  #    find(:all)
+  #   end
+  # end
 end

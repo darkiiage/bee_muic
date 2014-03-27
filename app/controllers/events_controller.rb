@@ -3,7 +3,14 @@ class EventsController < ApplicationController
   before_action :correct_user,   only: :destroy
 
   def index
-    @events = Event.search(params[:search])
+    @search = Event.search(params[:q])
+    @events = @search.result.paginate(page: params[:page], :per_page => 10)
+    @event_dates = Array.new
+    @events.each do |event|
+      @event_dates << event.start_date.to_date()
+    end
+    @event_dates = @event_dates.uniq
+    
   end
 
 

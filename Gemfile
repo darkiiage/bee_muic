@@ -33,6 +33,7 @@ gem 'sprockets', '2.11.0'
 gem 'carrierwave'
 gem 'bootstrap-datetimepicker-rails', '~> 0.0.11'
 gem 'acts_as_votable', '~> 0.8.0'
+gem 'ransack'
 
 
 
