@@ -61,7 +61,11 @@
         <%= has_location.room %>
         (<%= has_location.floor_number %>th Floor ) <br><br>
         <b> Location Description: </b>
-        <%= has_location.description %>
+        <%= has_location.description %> <br> <br> 
+        <% @map = Map.find(1).map_image %>
+        <h3><%= link_to "Click here to view university map ", @map.to_s %> or 
+            <%= link_to "download file", download_map_path %>
+        </h3>
       <% end %>
     </div>
     <div class="tab-pane" id="pre-regist">

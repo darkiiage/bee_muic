@@ -34,5 +34,6 @@ BeeMuic::Application.routes.draw do
   match '/contact', to: 'static_pages#contact', via: 'get'
   match '/createevent', to: 'events#new',       via: 'get'
   match '/feed',     to: 'static_pages#feed',   via: 'get'
+  match '/download_map', to:'maps#download_map', via: 'get'
 
 end

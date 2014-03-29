@@ -18,6 +18,15 @@ class MapsController < ApplicationController
       render 'edit'
     end
   end
+
+  def download_map
+    @map = Map.find(1).map_image
+    send_file(
+      'public/' + @map.to_s(),
+      filename: "Mahidol University Salaya Map.jpg",
+      type: "application/jpg"
+    )
+  end
   
 
   private
