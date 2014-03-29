@@ -10,9 +10,7 @@ class User < ActiveRecord::Base
   has_many :followers, through: :reverse_relationships, source: :follower
 
 
-
-  before_save { self.email = email.downcase }
-  before_create :create_remember_token
+  before_create :create_remember_token, :description => "I'm a bee. I love sharing !"
   
   validates :first_name, presence: true, length: { maximum: 50 }
   validates :last_name, length: { maximum: 50 }
@@ -20,10 +18,14 @@ class User < ActiveRecord::Base
   validates :email, presence:   true,
                     format:     { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
+
   has_secure_password
   validates :password, length: { minimum: 6 }
 
+  validates :user_image, presence: false
+  mount_uploader :user_image, ImageUploader
 
+  before_save { self.email = email.downcase }
 
 
   def User.new_remember_token

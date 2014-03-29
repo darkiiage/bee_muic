@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      @user.update_attributes(description: "I'm a bee#2! I love sharing!")
+      @user.update_attributes(description: "I'm a bee! I love sharing!")
       sign_in @user
       flash[:success] = "Welcome to bee MU!"
       redirect_to @user
@@ -74,7 +74,7 @@ class UsersController < ApplicationController
 
     def user_edit_params
       params.require(:user).permit(:first_name,:last_name, :email, :password,
-                                   :password_confirmation, :description, :faculty, :phone)
+                                   :password_confirmation, :description, :faculty, :phone, :user_image)
     end
 
     def signed_in_user

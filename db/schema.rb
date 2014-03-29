@@ -127,6 +127,7 @@ ActiveRecord::Schema.define(version: 20140325113456) do
     t.string   "remember_token"
     t.boolean  "admin",           default: false
     t.boolean  "active",          default: true
+    t.string   "user_image"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

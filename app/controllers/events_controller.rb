@@ -34,8 +34,8 @@ class EventsController < ApplicationController
     if @event.event_image.blank?
       @event_type = EventType.find_by name: @event.event_type
       @event.event_image = @event_type.image;
-
     end 
+    
     if @event.save
       flash[:success] = "Event created!"
       redirect_to @event

@@ -6,6 +6,8 @@ namespace :db do
                          email: "kelly@wang.com",
                          password: "111111",
                          password_confirmation: "111111",
+                         description: "I'm a bee! I love sharing!",
+                         user_image: "defult_profile_image.png",
                          admin: true, 
                          active: true)
 
@@ -14,6 +16,7 @@ namespace :db do
                          email: "hello@kitty.com",
                          password: "111111",
                          password_confirmation: "111111",
+                         description: "I'm a bee! I love sharing!",
                          admin: false, 
                          active: true)
 
@@ -22,6 +25,7 @@ namespace :db do
                          email: "mickey@mouse.com",
                          password: "111111",
                          password_confirmation: "111111",
+                         description: "I'm a bee! I love sharing!",
                          admin: false, 
                          active: true)
 
@@ -30,6 +34,7 @@ namespace :db do
                          email: "snoopy@doopy.com",
                          password: "111111",
                          password_confirmation: "111111",
+                         description: "I'm a bee! I love sharing!",
                          admin: false, 
                          active: true)
 
@@ -38,6 +43,7 @@ namespace :db do
                          email: "sponge@bob.com",
                          password: "111111",
                          password_confirmation: "111111",
+                         description: "I'm a bee! I love sharing!",
                          admin: false, 
                          active: true)
 

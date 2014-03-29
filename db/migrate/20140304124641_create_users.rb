@@ -11,6 +11,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :remember_token
       t.boolean :admin, default: false
       t.boolean :active, default: true
+      t.string :user_image
 
       t.timestamps
     end

@@ -7,6 +7,8 @@ module UsersHelper
     image_tag("defult_profile_image.png", alt: user.first_name, class: "gravatar")
   end
 
+  
+
 
 end
 
