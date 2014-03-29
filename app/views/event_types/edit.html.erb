@@ -1,17 +1,20 @@
 <% provide(:title, "Edit Event Types") %>
-<h1>Update Event Types</h1>
+<h1>Update Event Types : <%= @event_type.name %> </h1>
 
-<div>
-  <%= form_for(@event_type) do |f| %>
-	<%= f.label :name, "Event Type Name" %>
-	<%= f.text_field :name %>
+<div class = "row">
+  <div class="span4 offset2">
+	<%= form_for(@event_type) do |f| %>
 
-	<%= f.label :color %>
-	<%= f.color_field :color, class: "color-picker"%>
+	  <%= f.label :name %>
+	  <%= f.text_field :name %>
+
+	  <%= f.label :color %>
+	  <%= f.color_field :color, class: "color-picker"%>
 	  
-	<%= f.label :image %>
-	<%= f.file_field :image%>
+	  <%= f.label :image %>
+	  <%= f.file_field :image%>
 
-	<%= f.submit "Edit this Event Type", class: "btn btn-medium btn-warning" %>
-  <% end %>
+	  <%= f.submit "Edit this Event Type", class: "btn btn-medium btn-warning" %>
+	<% end %>
+  </div>
 </div>

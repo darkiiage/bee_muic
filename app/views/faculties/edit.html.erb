@@ -1,0 +1,21 @@
+<% provide(:title, "Edit Faculty") %>
+<h1>Update Faculty: <%= @faculty.faculty_name %> </h1>
+
+<div class = "row">
+  <div class="span4 offset2">
+    <%= form_for(@faculty) do |f| %>
+      
+      <%= render 'shared/error_messages', object: f.object %>
+      
+      <%= f.label :faculty_name %>
+      <%= f.text_field :faculty_name %>
+
+      <%= f.label :faculty_short_name, "Symbol" %>
+      <%= f.text_field :faculty_short_name, :maxlength=>"4"%>
+
+      <%= f.label :faculty_type %>
+      <%= f.select :faculty_type, options_for_select([["Faculties", "Faculties"], ["Institutes", "Institutes"], ["Colleges", "Colleges"], ["Centers", "Centers"]]) %>
+      <%= f.submit "Edit this Faculty", class: "btn btn-medium btn-warning" %>
+    <% end %>
+  </div>
+</div>

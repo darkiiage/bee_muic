@@ -1,5 +1,6 @@
 BeeMuic::Application.routes.draw do
 
+  get "maps/edit"
   resources :users do
     member do
       get :following, :followers
@@ -22,6 +23,7 @@ BeeMuic::Application.routes.draw do
   resources :event_types
   resources :locations
   resources :social_links
+  resources :maps
 
   root  'events#index'
   match '/signup',  to: 'users#new',            via: 'get'

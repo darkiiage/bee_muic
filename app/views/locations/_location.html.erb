@@ -4,12 +4,11 @@
   <%= link_to "delete", location, method: :delete,
 		              data: { confirm: "You sure?" } %> |
 
-  <%= link_to "Edit", location, :data => {:toggle=> "modal", :target => "#myModal", :remote => (edit_location_path(location) + "#modal-edit-fields")} %>
-  <%= link_to "Edit", "#collapse"+location.id.to_s(),:data => {:toggle=> "collapse", :parent => "#accordion"}%>
+  <%= link_to "Edit", edit_location_path(location)%>
 
   <% @collapse = "collapse"+location.id.to_s() %>
 
-  <div id="<%= @collapse%>" class="panel-collapse collapse">
+  <div id="<%= @collapse %>" class="panel-collapse collapse">
     <div class="panel-body">
       <%= form_for(@location) do |f| %>
       

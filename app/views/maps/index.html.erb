@@ -1,0 +1,12 @@
+<% if !current_user.admin? %> 
+  <h1>Page Not Found</h1> 
+<% else %>
+
+
+<h1> University Map </h1>
+  <%= render 'maps/edit' %>
+  <% @maps.each do |map| %>
+	<%= image_tag map.map_image, size: "1000" %>
+  <% end %>
+
+<% end %>

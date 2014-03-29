@@ -1,0 +1,6 @@
+<%= form_for(@edit_map) do |f| %>
+	<%= f.label :map_image, "change the map " %>
+	<%= f.file_field :map_image%>
+
+	<%= f.submit "Change this image", class: "btn btn-medium btn-warning" %>
+<% end %>

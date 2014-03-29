@@ -3,7 +3,8 @@
   <%= best_in_place faculty, :faculty_name %> |
   <%= best_in_place faculty, :faculty_type, :type => :select, :collection => [["Faculties", "Faculties"], ["Institutes", "Institutes"], ["Colleges", "Colleges"], ["Centers", "Centers"]] %> |
   <%= link_to "delete", faculty, method: :delete,
-              data: { confirm: "You sure?" } %> 
+              data: { confirm: "You sure?" } %> |
+  <%= link_to "edit", edit_faculty_path(faculty) %>
 
 </li>
 

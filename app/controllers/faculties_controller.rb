@@ -1,8 +1,6 @@
 class FacultiesController < ApplicationController
   respond_to :html, :json
 
-
-
   def index
     @faculty = Faculty.new
     @faculties = Faculty.all
@@ -32,15 +30,11 @@ class FacultiesController < ApplicationController
   
   def update
     @faculty = Faculty.find(params[:id])
-    respond_to do |format|
-      if @faculty.update_attributes(faculty_params)
-        format.html {redirect_to faculties notice: "updated"}
-        format.xml  { head :ok }
-        format.json { respond_with_bip(@faculty) }
+    if @faculty.update_attributes(faculty_params)
+        flash[:success] = "Faculty updated."
+        redirect_to faculties_path
       else
-        format.html {render :action => 'edit'}
-        format.json {render :jason => @faculty.errors.fullmessages}
-      end
+        render 'edit'
     end
   end
 

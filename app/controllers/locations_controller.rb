@@ -16,10 +16,11 @@ class LocationsController < ApplicationController
   end
 
   def edit
+    @location = Location.find(params[:id])
   end
 
   def update
-    @edit_location = Location.find(params[:id])
+    @location = Location.find(params[:id])
     if @location.update_attributes(location_params)
       flash[:success] = "Location updated"
       redirect_to locations_path

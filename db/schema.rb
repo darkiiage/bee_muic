@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140325113456) do
+ActiveRecord::Schema.define(version: 20140329093427) do
 
   create_table "comments", force: true do |t|
     t.text     "comment_content"
@@ -94,6 +94,12 @@ ActiveRecord::Schema.define(version: 20140325113456) do
   create_table "locations", force: true do |t|
     t.integer  "map_number"
     t.string   "location_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "maps", force: true do |t|
+    t.string   "map_image"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
