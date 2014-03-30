@@ -8,6 +8,7 @@ BeeMuic::Application.routes.draw do
   end
   resources :relationships, only: [:create, :destroy]
   resources :sessions, only: [:new, :create, :destroy]
+  
   resources :events do 
     resources :comments do
       member do

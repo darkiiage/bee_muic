@@ -55,7 +55,7 @@ namespace :db do
     mamamia = kelly.events.create!(event_name: "Mamamia Musical",
                          start_date: "2014-03-24 14:16:00 UTC",
                          end_date: "2014-03-24 14:16:00 UTC ",
-                         event_cost: 0,
+                         event_cost: 200,
                          event_guest_type: "Public",
                          event_guest_limit: 0,
                          event_food: true,
@@ -67,6 +67,33 @@ namespace :db do
                          floor_number: 4,
                          room: "Auditorium",
                          description: "Ask any students if you do not where Auditorium is" )
+
+
+
+
+    #---------------  event 2 ------------------
+    logic = kelly.events.create!(event_name: "Logic Final Exam review",
+                         start_date: "2014-03-11 14:00:00 UTC",
+                         end_date: "2014-03-11 18:00:00 UTC ",
+                         event_cost: 0,
+                         event_guest_type: "Students Only",
+                         event_guest_limit: 15,
+                         event_food: false,
+                         event_preregist: true,
+                         event_type: "Review Session" )
+
+    logic.has_locations.create!(
+                         location: "Office of President",
+                         floor_number: 4,
+                         room: "Computer Science Room",
+                         description: "Somewhere near the back door of Library" )
+
+    logic.has_contacts.create!(
+                         contact_name: "Tee",
+                         contact_email: "peeTee@tee.com",
+                         contact_phone: "0800001234")
+
+
 
 #----------------------------------------------------------------------------------------
 #-------------------------- FACULTY -----------------------------------------------------

@@ -1,6 +1,7 @@
 class Event < ActiveRecord::Base
   belongs_to :user
   has_many :comments, dependent: :destroy
+  has_many :preregisters, dependent: :destroy
   has_many :has_locations, dependent: :destroy
   accepts_nested_attributes_for :has_locations, :allow_destroy => true
   has_many :has_contacts, dependent: :destroy
@@ -11,8 +12,8 @@ class Event < ActiveRecord::Base
   default_scope -> { order('start_date ASC') }
   validates :user_id, presence: true
   validates :event_name, presence:true
-  validates :start_date, presence:false
-  validates :end_date, presence:false
+  validates :start_date, presence:true
+  validates :end_date, presence:true
   validates :event_type, presence:true
   validates :has_socials, presence:false
   validates :event_image, presence: false
@@ -27,6 +28,7 @@ class Event < ActiveRecord::Base
     where("user_id IN (#{followed_user_ids})",
           user_id: user.id)
   end
+
 
   # def self.search(search)
   #   if search

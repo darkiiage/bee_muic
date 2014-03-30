@@ -5,13 +5,15 @@
 <h2>
   <%= @event.event_type%> |
   <%= @event.event_name%>
-  <% if current_user.admin? || current_user?(@event.user)  %> 
-    | <%= link_to "delete", @event , method: :delete,
-                                     data: { confirm: "You sure?" },
-                                     title: @event.event_name %>
-    | <%= link_to "edit", edit_event_path(@event) %>
+  <% if signed_in? %>
+    <% if current_user.admin? || current_user?(@event.user) %> 
+      | <%= link_to "delete", @event , method: :delete,
+                                       data: { confirm: "You sure?" },
+                                       title: @event.event_name %>
+      | <%= link_to "edit", edit_event_path(@event) %>
 
-  <% end %> 
+    <% end %>
+  <%end%> 
 </h2>
 
 <div class= "row">
@@ -32,7 +34,6 @@
   <ul class="nav nav-tabs">
     <li class="active"><a href="#about" data-toggle="tab">About</a></li>
     <li><a href="#location" data-toggle="tab"> Location </a></li>
-    <li><a href="#pre-regist" data-toggle="tab"> Pre-regist </a></li>
     <li><a href="#contact" data-toggle="tab"> Contact / Social </a></li>
   </ul>
 </div>
@@ -68,14 +69,7 @@
         </h3>
       <% end %>
     </div>
-    <div class="tab-pane" id="pre-regist">
-      <b> Guest Limit: </b> <%= @event.event_guest_limit%>  <br><br>
-      <% if @event.event_preregist %>
-        <% #render '' %>
-      <% else %>
-        <h3> This event does not require pre-registration </h3><br> 
-      <% end %>
-    </div>
+
     <div class="tab-pane" id="contact">
       <div class="roew">
         <div class="span4 offset">

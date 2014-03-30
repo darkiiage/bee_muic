@@ -87,9 +87,29 @@ a:hover{
 /* header */
 
 .navbar-inverse .navbar-inner {
+  background: #ffa319;
   background-image: linear-gradient(to bottom,#FFA319 , #F8B932);
   background-repeat: repeat-x;
   border: none;
+}
+
+.navbar-inverse .brand, .navbar-inverse .nav > li > a {
+color: #FFFFFF;
+font-size: 1.1em;
+text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+
+}
+
+.navbar-inverse .nav > li > a:focus, .navbar-inverse .nav > li > a:hover  {
+background-color: transparent;
+color: rgb(56, 56, 56);
+font-weight: 700
+}
+
+.navbar-inverse .nav > li > a:focus, .navbar-inverse .nav > li >  a:active {
+background-color: transparent;
+color: rgb(56, 56, 56);
+font-weight: 700
 }
 
 #logo {
@@ -323,7 +343,7 @@ aside {
 
 .subtitle_head{
   margin-top:40px;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
   padding: 10px 15px ;
   background-color: #E7E7E7;
   font-size: 1.1em;
