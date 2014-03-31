@@ -3,10 +3,12 @@ class EventsController < ApplicationController
   before_action :correct_user,   only: :destroy
 
   def index
-    @search = Event.search(params[:q])
-    @cal_events = @search.result
-    @date = params[:month] ? Date.parse(params[:month]) : Date.today
+    @search = Event.upcoming_events.search(params[:q])
     @events = @search.result.paginate(page: params[:page], :per_page => 10)
+    @cal_search = Event.search(params[:q])
+    @cal_events = @cal_search.result
+    @date = params[:month] ? Date.parse(params[:month]) : Date.today
+
   
   end
 
@@ -14,7 +16,7 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     @comment_items = @event.comments.paginate(page: params[:page])
-    @comment = @event.comments.build if signed_in?
+    @comment =  @event.comments.build 
   end
 
   def new

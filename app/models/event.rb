@@ -1,7 +1,6 @@
 class Event < ActiveRecord::Base
   belongs_to :user
   has_many :comments, dependent: :destroy
-  has_many :preregisters, dependent: :destroy
   has_many :has_locations, dependent: :destroy
   accepts_nested_attributes_for :has_locations, :allow_destroy => true
   has_many :has_contacts, dependent: :destroy
@@ -20,6 +19,9 @@ class Event < ActiveRecord::Base
 
 
   mount_uploader :event_image, ImageUploader
+
+  scope :upcoming_events, where("start_date > ?", Time.zone.now.beginning_of_day())
+  scope :past_events, where("start_date < ?", Time.zone.now.beginning_of_day())
 
   
   def self.from_users_followed_by(user)

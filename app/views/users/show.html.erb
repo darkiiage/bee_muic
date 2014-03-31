@@ -18,21 +18,28 @@
 	  <h3><%= @user.description%> </h3>
   </div>
 </div>
-<div = "row">
-	<nav>
-  	<ul class="nav nav-pills">
-  	  <li><%= link_to "Up Coming Events", '#' %> </li>
-  	  <li><%= link_to "Past Events", '#' %> </li>
-  	</ul>
-  </nav>
-    <% if @user.events.any? %>
-      <h3> <%= @user.events.count %> events</h3>
-      <ol class="events">
-        <%= render @events %>
-      </ol>
-      <%= will_paginate @events%>
-    <% else %>
-      There is no events yet!
-    <% end %>
+
+
+<!-- Nav tabs -->
+<div class ="subtitle_tab_head">
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#upcoming" data-toggle="tab">Upcoming Events</a></li>
+    <li><a href="#past" data-toggle="tab"> Past Events </a></li>
+  </ul>
 </div>
+
+<div class ="subtitle_content">
+  <!-- Tab panes -->
+  <div class="tab-content"> 
+    <div class="tab-pane active" id="upcoming">
+      <ol class="events"><%= render @upcoming_events %></ol>
+      <%= will_paginate @upcoming_events%>
+    </div>
+    <div class="tab-pane" id="past">
+      <ol class="events"><%= render @past_events %></ol>
+      <%= will_paginate @upcoming_events%>
+    </div>
+  </div>
+</div>
+
 
