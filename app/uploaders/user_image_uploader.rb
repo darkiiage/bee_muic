@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class ImageUploader < CarrierWave::Uploader::Base
+class UserImageUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
@@ -10,7 +10,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   storage :file
   # storage :fog
 
-  #_up Override the directory where uploaded files will be stored.
+  # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
@@ -18,7 +18,8 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   def default_url
-    [version_name, "defult_image.png"].compact.join('_')
+
+    [version_name, "defult_profile_image.png"].compact.join('_')
   end
 
   # Process files as they are uploaded:
@@ -29,9 +30,9 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  #version :thumb do
-  #  process :resize_to_fit => [50, 50]
-  #end
+  # version :thumb do
+  #   process :resize_to_fit => [50, 50]
+  # end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:

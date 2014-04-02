@@ -1,25 +1,30 @@
+<% comments.each do |comment| %>
 <li>
-  <% @user ||= User.find(comment.user_id) %> 
-  <%= link_to @user.first_name+" "+@user.last_name, @user %>
+  <% user ||= User.find(comment.user_id) %> 
+  <%= link_to user.first_name+" "+user.last_name, user %>
   <text class="timestamp">
     Posted <%= time_ago_in_words(comment.created_at) %> ago.
   </text> 
   <span class="content"><%= comment.comment_content %></span>
 
   <span> (<%= comment.likes.size %>) 
-	  <% if current_user.voted_up_on? comment %>
-	    <%= link_to "unlike", unlike_event_comment_path(@event, comment), method: :put%>
-	  <% else %>
-	    <%= link_to "like", like_event_comment_path(@event, comment), method: :put %>
-	  <% end %>
+    <% if signed_in? %>
+  	  <% if current_user.voted_up_on? comment %>
+        <%= link_to "unlike", unlike_event_comment_path(@event, comment), method: :put, remote: true%>
+      <% else %>
+        <%= link_to "like", like_event_comment_path(@event, comment), method: :put, remote: true%>
+      <% end %>
   | 
   	<% if current_user.voted_down_on? comment %>
-	    <%= link_to "undislike", undislike_event_comment_path(@event, comment), method: :put%>
+	    <%= link_to "undislike", undislike_event_comment_path(@event, comment), method: :put, remote: true%>
 	  <% else %>
-	    <%= link_to "dislike", dislike_event_comment_path(@event, comment), method: :put%>
+	    <%= link_to "dislike", dislike_event_comment_path(@event, comment), method: :put, remote: true%>
 	  <% end %>
+  <% else %>
+    likes | dislikes
+  <% end %>
 	  (<%= comment.dislikes.size %>) 
-  | [<%= comment.votes.size %> total votes]</span>
-
-
+  | [<%= comment.votes.size %> total votes]
+  </span>
 </li>
+<% end %>

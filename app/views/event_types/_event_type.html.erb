@@ -3,12 +3,12 @@
 	  <div class = "span2">
 	  	<%= image_tag event_type.image_url.to_s, size:"150" %>
 	  </div>
+	  
 	  <div class = "span4">
 		  <%= event_type.name %> |
-		  color: <%= event_type.color %>  |
-		  <%= link_to "delete", event_type, method: :delete,
-		              data: { confirm: "You sure?" } %> |
-		  <%= link_to "Edit", edit_event_type_path(event_type) %>
+		  <%= link_to  image_tag("edit.png", size: "15"), edit_event_type_path(event_type) %>  |
+		  <%= link_to  image_tag("delete.png", size: "15"), event_type, method: :delete,
+		              data: { confirm: "You sure?" } %> 
 	  </div>
   </div>
   <div class = "row">

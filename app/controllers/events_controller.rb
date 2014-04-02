@@ -16,7 +16,7 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     @comment_items = @event.comments.paginate(page: params[:page])
-    @comment =  @event.comments.build 
+    @comment_build =  @event.comments.build
   end
 
   def new

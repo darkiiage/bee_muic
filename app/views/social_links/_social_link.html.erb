@@ -1,13 +1,13 @@
 <li>
   <div class ="row">
-	  <div class = "span2">
-	  	<%= image_tag social_link.social_image, size:"150" %>
+	  <div class = "span1">
+	  	<%= image_tag social_link.social_image, size:"50" %>
 	  </div>
 	  <div class = "span4">
 		  <%= social_link.social_name %> |
-		  <%= link_to "delete", social_link, method: :delete,
-		              data: { confirm: "You sure?" } %> |
-		   <%= link_to "Edit", edit_social_link_path(social_link) %>
+		   <%= link_to image_tag("edit.png", size: "15"), edit_social_link_path(social_link) %> |
+		  <%= link_to image_tag("delete.png", size: "15"), social_link, method: :delete,
+		              data: { confirm: "You sure?" } %> 
 	  </div>
   </div>
   <div class = "row">

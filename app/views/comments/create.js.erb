@@ -1,0 +1,2 @@
+$("#comment_items").html("<%= escape_javascript(render('comments/comment', comments: @comment_items, user: @user)) %>")
+$('#new_comment')[0].reset()

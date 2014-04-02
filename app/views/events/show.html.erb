@@ -1,24 +1,31 @@
 <% provide(:title, @event.event_name) %>
 <% @user ||= User.find(@event.user_id) %>
 <% @event_type ||= EventType.find_by name: @event.event_type %>
+<div class = "row"> <h2> 
+  <div class ="span9">
+    <%= @event.event_type%> |
+    <%= @event.event_name%>
+  </div>
+  <div class ="span1 offset1">
+    <% if signed_in? %>
+      <% if current_user?(@event.user) %> 
+        <%= link_to image_tag("edit.png", size: "20"), edit_event_path(@event) %>
+      <% end %> 
+      <% if current_user.admin? || current_user?(@event.user) %> 
+        <%= link_to image_tag("delete.png", size: "20"), @event , method: :delete,
+                                         data: { confirm: "You sure?" },
+                                         title: @event.event_name %>
+      <% end %>
+    <%end%> 
+  </div> </h2>
+</div>
 
-<h2>
-  <%= @event.event_type%> |
-  <%= @event.event_name%>
-  <% if signed_in? %>
-    <% if current_user.admin? || current_user?(@event.user) %> 
-      | <%= link_to "delete", @event , method: :delete,
-                                       data: { confirm: "You sure?" },
-                                       title: @event.event_name %>
-      | <%= link_to "edit", edit_event_path(@event) %>
-
-    <% end %>
-  <%end%> 
-</h2>
+<br><br>
 
 <div class= "row">
   <div class="span3">
-    <tab><%= image_tag @event.event_image_url.to_s, size:"220" %>
+
+    <%= image_tag @event.event_image_url.to_s, size:"220" %>
   </div>
   <div class="span5 offset1">
     <h3> by <%= link_to @user.first_name+" "+@user.last_name, @user %> </h3>
@@ -28,6 +35,8 @@
     </p>
   </div>
 </div>
+
+<br><br>
 
 <!-- Nav tabs -->
 <div class ="subtitle_tab_head">
@@ -104,12 +113,18 @@
   <div class ="subtitle_content">
     <div class = "row">
       <div class="span8">
+      <% if signed_in? %>
         <%= render 'shared/comment_form' %>
+      <% else %>
+        <%= link_to "please sign in to comment", signin_url %>
+      <% end %>
       </div>
       <div class="span8">
         <% if @comment_items.any? %>
           <ol class="comments">
-            <%= render partial: 'comments/comment', collection: @comment_items %>
+            <div id="comment_items">
+              <%= render 'comments/comment', comments: @comment_items %>
+            </div>
           </ol>
           <%= will_paginate @comment_items %>
         <% end %>

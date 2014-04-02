@@ -8,8 +8,8 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    @upcoming_events = @user.events.upcoming_events.paginate(page: params[:page])
-    @past_events = @user.events.past_events.paginate(page: params[:page])
+    @upcoming_events = @user.events.select { |event| event.start_date > Time.now.beginning_of_day() }
+    @past_events = @user.events.select { |event| event.start_date < Time.now.beginning_of_day() }
   end
 
 

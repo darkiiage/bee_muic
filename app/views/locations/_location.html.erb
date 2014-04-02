@@ -1,10 +1,9 @@
 <li>
   <%= location.map_number %> |
   <%= location.location_name %> |
-  <%= link_to "delete", location, method: :delete,
-		              data: { confirm: "You sure?" } %> |
-
-  <%= link_to "Edit", edit_location_path(location)%>
+  <%= link_to  image_tag("edit.png", size: "15"), edit_location_path(location)%>  |
+  <%= link_to  image_tag("delete.png", size: "15"), location, method: :delete,
+		              data: { confirm: "You sure?" } %> 
 
   <% @collapse = "collapse"+location.id.to_s() %>
 

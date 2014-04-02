@@ -28,7 +28,6 @@ ActiveRecord::Schema.define(version: 20140329093427) do
   create_table "event_types", force: true do |t|
     t.string   "name"
     t.string   "image"
-    t.string   "color"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

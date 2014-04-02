@@ -1,9 +1,8 @@
-<% unless current_user?(@user) %>
-  <div id="like_form">
-  <% if current_user.voted_up_on? @comment %>
-    <%= render 'comments/unlike' %>
+<div id="like_form">
+  <% if current_user.voted_up_on? this.comment %>
+    <%= link_to "unlike", unlike_event_comment_path(@event.id, comment), method: :put%>
   <% else %>
-    <%= link_to "like", like_event_comment_path(@event, @comment), method: :put,  :class => "btn" %>
+    <%= link_to "like", like_event_comment_path(@event.id, comment), method: :put%>
   <% end %>
-  </div>
-<% end %>
+</div>
+

@@ -7,9 +7,8 @@
   <div class="span4 offset0">
     <%= render 'new' %>
   </div>
-
   <div class="span7 offset1">
-     ALL FACULTIES
+     ALL FACULTIES <%= @faculty_items.count %>
     <ul class="users">
       <%= render partial: @faculties, collection: @faculty_items %>
     </ul> 

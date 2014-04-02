@@ -4,7 +4,7 @@ class FacultiesController < ApplicationController
   def index
     @faculty = Faculty.new
     @faculties = Faculty.all
-    @feed_items = Faculty.all
+    @faculty_items = Faculty.all
   end
 
   def create
@@ -13,10 +13,11 @@ class FacultiesController < ApplicationController
       flash[:success] = "Faculty created"
       redirect_to faculties_path
     else
-      @feed_items = []
-      render 'faculties/new'
+      @faculty_items = []
+      render 'index'
     end
   end
+
 
   def destroy
     Faculty.find(params[:id]).destroy

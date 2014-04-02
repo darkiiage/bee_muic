@@ -1,6 +1,8 @@
 namespace :db do
   desc "Fill database with sample data"
   task populate: :environment do
+
+
     admin = User.create!(first_name: "Kelly",
                          last_name: "Wang",
                          email: "kelly@wang.com",
@@ -93,6 +95,46 @@ namespace :db do
                          contact_email: "peeTee@tee.com",
                          contact_phone: "0800001234")
 
+
+    #-------------------- ALL EVENTS -------------------------
+
+    def make_events
+      users = User.all(limit: 6)
+      20.times do
+
+        event_name = ['I. Math Review', 'CS Gilrs Salon Day','CS Girls Baking Day','Intro to Logic Final Exam Review',
+                      'Mama Mia! the Musical', 'IC Sport Day', 'Teaching Kid with Volunteer Club','Face Painting Session',
+                      'International Movie Day','Muticultural Day','Cycling with KeePok','Social Dance Free Lecture',
+                      'Geek Day'] 
+        start_date = ['2014-04-01 08:00:00 UTC','2014-04-01 10:00:00 UTC',
+                     '2014-04-02 09:00:00 UTC','2014-04-02 14:00:00 UTC',
+                     '2014-04-03 12:00:00 UTC','2014-04-03 14:00:00 UTC',
+                     '2014-04-04 08:00:00 UTC','2014-04-04 10:00:00 UTC',]
+        end_date = ['2014-04-06 08:00:00 UTC','2014-04-06 10:00:00 UTC']
+        event_cost = ['0','50','100','200','500']
+        event_guest_type = ['Public','Staff and Students','Students Only']
+        event_guest_limit = ['0','10','100']
+        event_food = ['true', 'false']
+        event_preregist = ['true', 'false']
+        event_type =  ['Social','Review Session', 'Volunteering', 'Guest Lecture', 'Review Session', 'Art & Music']
+                         
+
+        users.each { |user| user.events.create!( 
+                                                 event_name: event_name.sample,
+                                                 start_date: start_date.sample,
+                                                 end_date: end_date.sample,
+                                                 event_cost: event_cost.sample,
+                                                 event_guest_type: event_guest_type.sample,
+                                                 event_guest_limit: event_guest_limit.sample,
+                                                 event_food: event_food.sample,
+                                                 event_preregist: event_preregist.sample,
+                                                 event_type: event_type.sample
+                                                  ) }
+       
+      end
+    end
+
+    make_events
 
 
 #----------------------------------------------------------------------------------------
@@ -212,24 +254,19 @@ namespace :db do
 #-------------------------- EVENT TYPE -----------------------------------------------------
 #----------------------------------------------------------------------------------------
     et1 = EventType.create!(name: "Social",
-                           image: "",
-                           color: "")
+                           image: "")
 
     et2 = EventType.create!(name: "Volunteering",
-                           image: "",
-                           color: "")
+                           image: "")
 
     et3 = EventType.create!(name: "Guest Lecture",
-                           image: "",
-                           color: "")
+                           image: "")
 
     et4 = EventType.create!(name: "Review Session",
-                           image: "",
-                           color: "")
+                           image: "")
 
     et5 = EventType.create!(name: "Art & Music",
-                           image: "",
-                           color: "")
+                           image: "")
 
 
 #----------------------------------------------------------------------------------------

@@ -2,15 +2,14 @@
 <li>
   <div class = "row">
     <div class ="span2 offset1">
-      <%= image_tag event.event_image_url.to_s, size:"150", :class => "img-thumbnail" %>
+    <tab>
+	    <%= image_tag event.event_image_url.to_s, size:"150" %>
     </div>
     <div class = "span5">
-      <div class = "event-title">
-	      <%= event.event_type %> | 
-		  <%= link_to event.event_name, event %> |
-		  <%= link_to "delete", event, method: :delete,
-		              data: { confirm: "You sure?" } %> <br>
+      <div class = "event-title"> 
+		  <%= link_to event.event_name, event %>
 	  </div>
+	  type: <%= event.event_type %><br>
 	  by : <b> <%= link_to event.user.first_name+" "+ event.user.last_name, event.user  %> </b><br>
 	  satrt : <b> <%= time_tag(event.start_date) %> </b> | 
 	  end :<%= time_tag(event.end_date) %> <br>

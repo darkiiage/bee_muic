@@ -1,20 +1,20 @@
 class CommentsController < ApplicationController
   before_action :signed_in_user, only: [:create, :destroy]
 
-  
-
   def index
   end
 
   def create
     @event = Event.find(params[:event_id])
   	@comment = @event.comments.build(comment_params)
+    @comment_items = @event.comments
     if @comment.save
-      flash[:success] = "Comment created!"
-      redirect_to @event
+      respond_to do |format|
+        format.html { redirect_to @event }
+        format.js
+      end
     else
-      @comment_items = []
-      render 'events/show'
+      redirect_to @users
     end
   end
 
@@ -24,29 +24,45 @@ class CommentsController < ApplicationController
   def upvote
     @event = Event.find(params[:event_id])
     @comment = Comment.find(params[:id])
+    @comment_items = @event.comments
     @comment.liked_by current_user
-    redirect_to @event
+    respond_to do |format|
+      format.html { redirect_to @event }
+      format.js
+    end
   end
 
   def unupvote
     @event = Event.find(params[:event_id])
     @comment = Comment.find(params[:id])
+    @comment_items = @event.comments
     @comment.unliked_by current_user
-    redirect_to @event
+    respond_to do |format|
+      format.html { redirect_to @event }
+      format.js
+    end
   end
 
   def downvote
     @event = Event.find(params[:event_id])
     @comment = Comment.find(params[:id])
+    @comment_items = @event.comments
     @comment.downvote_from current_user
-    redirect_to @event
+    respond_to do |format|
+      format.html { redirect_to @event }
+      format.js
+    end
   end
 
   def undownvote
     @event = Event.find(params[:event_id])
     @comment = Comment.find(params[:id])
+    @comment_items = @event.comments
     @comment.undisliked_by current_user
-    redirect_to @event
+    respond_to do |format|
+      format.html { redirect_to @event }
+      format.js
+    end
   end
 
   private

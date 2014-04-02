@@ -33,9 +33,12 @@ $(function() {
       language: 'pt-BR',
       startDate: new Date()
     });
-  });
 
+    var event_type = $('.event_type');
+    var color = event_type.data('color');
+    $('.event_type').css('background-color', color);
 
+});
 
 
 

@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6 }
 
   validates :user_image, presence: false
-  mount_uploader :user_image, ImageUploader
+  mount_uploader :user_image, UserImageUploader
 
   before_save { self.email = email.downcase }
 
